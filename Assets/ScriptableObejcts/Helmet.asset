@@ -22,6 +22,6 @@ MonoBehaviour:
   levelData:
   - sellPrice: 6
     buyPrice: 24
-    armour: 0
-    addHealth: 0
+    armour: 20
+    addHealth: 10
   armourType: 0

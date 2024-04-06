@@ -22,6 +22,6 @@ MonoBehaviour:
   levelData:
   - sellPrice: 10
     buyPrice: 50
-    attack: 0
-    attackSpeed: 0
+    attack: 10
+    attackSpeed: 1
   weaponType: 0

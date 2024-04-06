@@ -22,7 +22,7 @@ public class ArmourCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            inventory.ArmourSlotUpdate(1, armour.armourImage, armour.rarityType, level, durability, armour);
+            inventory.ArmourSlotUpdate(null, 1, armour.armourImage, armour.rarityType, level, durability, armour);
             gameObject.SetActive(false);
         }
     }

@@ -22,19 +22,19 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log(gameObject.name);
-        if (armour != null)
+        if (armour != null && !GetComponentInChildren<Drag>().drag)
         {
             armourDetails.gameObject.SetActive(true);
             armourDetails.DetailsUpdate(armour.armourName, armour.description, quantityText.text, durability / 100, armour.levelData[level].sellPrice,
-                armour.levelData[level].buyPrice, rarityImage, itemImage);
+                armour.levelData[level].buyPrice, armour.levelData[level].armour, armour.levelData[level].addHealth, rarityImage, itemImage);
         }
-        else if (weapons != null)
+        else if (weapons != null && !GetComponentInChildren<Drag>().drag)
         {
             weaponDetails.gameObject.SetActive(true);
             weaponDetails.DetailsUpdate(weapons.weaponName, weapons.description, quantityText.text, durability / 100, weapons.levelData[level].sellPrice,
-                weapons.levelData[level].buyPrice, rarityImage, itemImage);
+                weapons.levelData[level].buyPrice, weapons.levelData[level].attack, weapons.levelData[level].attackSpeed, rarityImage, itemImage);
         }
-        else if (items != null)
+        else if (items != null && !GetComponentInChildren<Drag>().drag)
         {
             itemDetails.gameObject.SetActive(true);
             itemDetails.DetailsUpdate(items.itemName, items.description, quantityText.text, items.maxStock, items.sellPrice, items.buyPrice, rarityImage, itemImage);

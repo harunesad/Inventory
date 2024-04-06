@@ -42,60 +42,98 @@ public class Inventory : MonoBehaviour
                 break;
         }
     }
-    public void ItemSlotUpdate(int quantity, Sprite itemImage, RarityType.rarityType rarityType, Items items)
+    public void ItemSlotUpdate(InventorySlot slot, int quantity, Sprite itemImage, RarityType.rarityType rarityType, Items items)
     {
-        for (int i = 0; i < slots.Count; i++)
+        if (slot == null)
         {
-            if (slots[i].items == null && slots[i].weapons == null && slots[i].armour == null)
+            for (int i = 0; i < slots.Count; i++)
             {
-                SlotUpdate(slots[i], quantity , itemImage, rarityType);
-                slots[i].items = items;
-                return;
+                if (slots[i].items == null && slots[i].weapons == null && slots[i].armour == null)
+                {
+                    SlotUpdate(slots[i], quantity, itemImage, rarityType);
+                    slots[i].items = items;
+                    return;
+                }
+            }
+            int newQuantity = 0;
+            for (int i = 0; i < slots.Count; i++)
+            {
+                if (slots[i].items == items)
+                {
+                    newQuantity = (newQuantity == 0) ? (int.Parse(slots[i].quantityText.text) + quantity) : (int.Parse(slots[i].quantityText.text) + newQuantity);
+                    Debug.Log(newQuantity);
+                    SlotUpdate(slots[i], newQuantity > items.maxStock ? items.maxStock : newQuantity, itemImage, rarityType);
+                    slots[i].items = items;
+                    newQuantity -= items.maxStock;
+                    if (newQuantity <= 0)
+                    {
+                        break;
+                    }
+                }
             }
         }
-        int newQuantity = 0;
-        for (int i = 0; i < slots.Count; i++)
+        else
         {
-            if (slots[i].items == items)
+            SlotUpdate(slot, quantity, itemImage, rarityType);
+            slot.items = items;
+        }
+    }
+    public void ArmourSlotUpdate(InventorySlot slot, int quantity, Sprite itemImage, RarityType.rarityType rarityType, int level, float durability, Armours armours)
+    {
+        if (slot == null)
+        {
+            for (int i = 0; i < slots.Count; i++)
             {
-                newQuantity = (newQuantity == 0) ? (int.Parse(slots[i].quantityText.text) + quantity) : (int.Parse(slots[i].quantityText.text) + newQuantity);
-                Debug.Log(newQuantity);
-                SlotUpdate(slots[i], newQuantity > items.maxStock ? items.maxStock : newQuantity, itemImage, rarityType);
-                slots[i].items = items;
-                newQuantity -= items.maxStock;
-                if (newQuantity <= 0)
+                if (slots[i].items == null && slots[i].weapons == null && slots[i].armour == null)
                 {
+                    SlotUpdate(slots[i], quantity, itemImage, rarityType);
+                    slots[i].armour = armours;
+                    slots[i].level = level;
+                    slots[i].durability = durability;
                     break;
                 }
             }
         }
-    }
-    public void ArmourSlotUpdate(int quantity, Sprite itemImage, RarityType.rarityType rarityType, int level, float durability, Armours armours)
-    {
-        for (int i = 0; i < slots.Count; i++)
+        else
         {
-            if (slots[i].items == null && slots[i].weapons == null && slots[i].armour == null)
-            {
-                SlotUpdate(slots[i], quantity, itemImage, rarityType);
-                slots[i].armour = armours;
-                slots[i].level = level;
-                slots[i].durability = durability;
-                break;
-            }
+            SlotUpdate(slot, quantity, itemImage, rarityType);
+            slot.armour = armours;
+            slot.level = level;
+            slot.durability = durability;
         }
     }
-    public void WeaponSlotUpdate(int quantity, Sprite itemImage, RarityType.rarityType rarityType, int level, float durability, Weapons weapons)
+    public void WeaponSlotUpdate(InventorySlot slot, int quantity, Sprite itemImage, RarityType.rarityType rarityType, int level, float durability, Weapons weapons)
     {
-        for (int i = 0; i < slots.Count; i++)
+        if (slot == null)
         {
-            if (slots[i].items == null && slots[i].weapons == null && slots[i].armour == null)
+            for (int i = 0; i < slots.Count; i++)
             {
-                SlotUpdate(slots[i], quantity, itemImage, rarityType);
-                slots[i].weapons = weapons;
-                slots[i].level = level;
-                slots[i].durability = durability;
-                break;
+                if (slots[i].items == null && slots[i].weapons == null && slots[i].armour == null)
+                {
+                    SlotUpdate(slots[i], quantity, itemImage, rarityType);
+                    slots[i].weapons = weapons;
+                    slots[i].level = level;
+                    slots[i].durability = durability;
+                    break;
+                }
             }
         }
+        else
+        {
+            SlotUpdate(slot, quantity, itemImage, rarityType);
+            slot.weapons = weapons;
+            slot.level = level;
+            slot.durability = durability;
+        }
+    }
+    public void SlotReset(InventorySlot slot)
+    {
+        slot.quantityText.text = "";
+        slot.itemImage.sprite = null;
+        slot.rarityImage.sprite = null;
+        slot.items = null;
+        slot.weapons = null;
+        slot.armour = null;
+        slot.durability = 0;
     }
 }

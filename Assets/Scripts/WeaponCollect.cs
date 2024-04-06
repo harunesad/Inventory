@@ -22,7 +22,7 @@ public class WeaponCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            inventory.WeaponSlotUpdate(1, weapons.weaponImage, weapons.rarityType, level, durability, weapons);
+            inventory.WeaponSlotUpdate(null, 1, weapons.weaponImage, weapons.rarityType, level, durability, weapons);
             gameObject.SetActive(false);
         }
     }

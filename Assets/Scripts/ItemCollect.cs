@@ -21,7 +21,7 @@ public class ItemCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            inventory.ItemSlotUpdate(quantity, items.itemImage, items.rarityType, items);
+            inventory.ItemSlotUpdate(null, quantity, items.itemImage, items.rarityType, items);
             gameObject.SetActive(false);
         }
     }
