@@ -9,9 +9,19 @@ public class Armours : ScriptableObject
     public string description;
     public Sprite armourImage;
     public GameObject prefab;
+    public RarityType.rarityType rarityType;
     public float durability;
     public int levelIndex;
     public List<ArmourLevels> levelData;
+    public enum ArmourType
+    {
+        HeadArmour,
+        ArmArmour,
+        BodyArmour,
+        LegArmour,
+        Shield
+    }
+    public ArmourType armourType;
 }
 [System.Serializable]
 public class ArmourLevels

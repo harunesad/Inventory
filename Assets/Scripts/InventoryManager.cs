@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    [SerializeField] CanvasGroup ýnventoryPanel;
     //Inventoryler slotlari arasindaki degis tokus
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,9 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ýnventoryPanel.alpha = (ýnventoryPanel.alpha == 0) ? 1 : 0;
+        }
     }
 }

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCollect : MonoBehaviour
+public class WeaponCollect : MonoBehaviour
 {
-    public Items items;
+    public int level;
+    public float durability;
+    public Weapons weapons;
     [SerializeField] Inventory inventory;
-    [SerializeField] int quantity;
     void Start()
     {
         
@@ -21,7 +22,7 @@ public class ItemCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            inventory.ItemSlotUpdate(quantity, items.itemImage, items.rarityType, items);
+            inventory.WeaponSlotUpdate(1, weapons.weaponImage, weapons.rarityType, level, durability, weapons);
             gameObject.SetActive(false);
         }
     }

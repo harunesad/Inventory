@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c441d25edee55c849b9ebcfb356454e2, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  itemName: 
-  description: 
-  maxStock: 0
-  sellPrice: 0
-  buyPrice: 0
-  itemImage: {fileID: 0}
+  itemName: Apple
+  description: Can iyilestirir.
+  itemImage: {fileID: 21300000, guid: adaac68d8e5d693499597113889d11d3, type: 3}
+  prefab: {fileID: 919132149155446097, guid: 8a4aa8011446a5d409ec1e4d3549b583, type: 3}
+  rarityType: 0
+  maxStock: 20
+  sellPrice: 1
+  buyPrice: 5
   drink: 0
   eat: 0
   use: 0
-  prefab: {fileID: 0}

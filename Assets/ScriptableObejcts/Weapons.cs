@@ -9,14 +9,14 @@ public class Weapons : ScriptableObject
     public string description;
     public Sprite weaponImage;
     public GameObject prefab;
+    public RarityType.rarityType rarityType;
     public float durability;
     public int levelIndex;
     public List<WeaponLevels> levelData;
     public enum WeaponType
     {
         Melee,
-        Range,
-        Shield
+        Range
     }
     public WeaponType weaponType;
 }

@@ -7,10 +7,11 @@ public class Items : ScriptableObject
 {
     public string itemName;
     public string description;
+    public Sprite itemImage;
+    public GameObject prefab;
+    public RarityType.rarityType rarityType;
     public int maxStock;
     public int sellPrice;
     public int buyPrice;
-    public Sprite itemImage;
     public bool drink, eat, use;
-    public GameObject prefab;
 }
