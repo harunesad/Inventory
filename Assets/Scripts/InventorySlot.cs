@@ -9,7 +9,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
 {
     public Image itemImage, rarityImage;
     public TextMeshProUGUI quantityText, equippedText;
-    //public RarityType.rarityType rarityType;
     public float durability;
     public int level;
     public Armours armour;

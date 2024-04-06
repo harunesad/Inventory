@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -134,6 +135,36 @@ public class Inventory : MonoBehaviour
         slot.items = null;
         slot.weapons = null;
         slot.armour = null;
+        slot.level = 0;
         slot.durability = 0;
+    }
+    public void SwitchSlot(InventorySlot mySlot, InventorySlot changeSlot)
+    {
+        var quantity = mySlot.quantityText.text;
+        var itemImage = mySlot.itemImage.sprite;
+        var rarityImage = mySlot.rarityImage.sprite;
+        var items = mySlot.items;
+        var weapons = mySlot.weapons;
+        var armour = mySlot.armour;
+        var level = mySlot.level;
+        var durability = mySlot.durability;
+
+        mySlot.quantityText.text = changeSlot.quantityText.text;
+        mySlot.itemImage.sprite = changeSlot.itemImage.sprite;
+        mySlot.rarityImage.sprite = changeSlot.rarityImage.sprite;
+        mySlot.items = changeSlot.items;
+        mySlot.weapons = changeSlot.weapons;
+        mySlot.armour = changeSlot.armour;
+        mySlot.level = changeSlot.level;
+        mySlot.durability = changeSlot.durability;
+
+        changeSlot.quantityText.text = quantity;
+        changeSlot.itemImage.sprite = itemImage;
+        changeSlot.rarityImage.sprite = rarityImage;
+        changeSlot.items = items;
+        changeSlot.weapons = weapons;
+        changeSlot.armour = armour;
+        changeSlot.level = level;
+        changeSlot.durability = durability;
     }
 }

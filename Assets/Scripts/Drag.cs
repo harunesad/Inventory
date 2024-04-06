@@ -62,6 +62,10 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 }
                 inventory.SlotReset(mySlot);
             }
+            else
+            {
+                inventory.SwitchSlot(mySlot, slot);
+            }
             Debug.Log(eventData.pointerDrag.name + " " + eventData.pointerEnter.name);
         }
         rect.position = startPos;
