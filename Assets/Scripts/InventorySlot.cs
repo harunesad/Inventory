@@ -20,7 +20,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log(gameObject.name);
         if (armour != null && !GetComponentInChildren<Drag>().drag)
         {
             armourDetails.gameObject.SetActive(true);

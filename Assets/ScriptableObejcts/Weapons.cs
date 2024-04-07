@@ -13,12 +13,14 @@ public class Weapons : ScriptableObject
     public float durability;
     public int levelIndex;
     public List<WeaponLevels> levelData;
+    public EquipType.Type type;
+    public WeaponType weaponType;
     public enum WeaponType
     {
-        Melee,
-        Range
+        Sword,
+        Axe,
+        Bow
     }
-    public WeaponType weaponType;
 }
 [System.Serializable]
 public class WeaponLevels

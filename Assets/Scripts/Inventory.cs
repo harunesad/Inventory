@@ -62,7 +62,6 @@ public class Inventory : MonoBehaviour
                 if (slots[i].items == items)
                 {
                     newQuantity = (newQuantity == 0) ? (int.Parse(slots[i].quantityText.text) + quantity) : (int.Parse(slots[i].quantityText.text) + newQuantity);
-                    Debug.Log(newQuantity);
                     SlotUpdate(slots[i], newQuantity > items.maxStock ? items.maxStock : newQuantity, itemImage, rarityType);
                     slots[i].items = items;
                     newQuantity -= items.maxStock;
@@ -149,6 +148,15 @@ public class Inventory : MonoBehaviour
         var level = mySlot.level;
         var durability = mySlot.durability;
 
+        if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && mySlot.items == null)
+        {
+            equipItem.Unequip();
+        }
+        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem1) && changeSlot.items == null)
+        {
+            equipItem1.Unequip();
+        }
+
         mySlot.quantityText.text = changeSlot.quantityText.text;
         mySlot.itemImage.sprite = changeSlot.itemImage.sprite;
         mySlot.rarityImage.sprite = changeSlot.rarityImage.sprite;
@@ -166,5 +174,14 @@ public class Inventory : MonoBehaviour
         changeSlot.armour = armour;
         changeSlot.level = level;
         changeSlot.durability = durability;
+
+        if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && mySlot.items == null)
+        {
+            equip.Equip();
+        }
+        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip1) && changeSlot.items == null)
+        {
+            equip1.Equip();
+        }
     }
 }

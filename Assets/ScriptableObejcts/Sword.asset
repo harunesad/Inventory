@@ -24,4 +24,4 @@ MonoBehaviour:
     buyPrice: 50
     attack: 10
     attackSpeed: 1
-  weaponType: 0
+  type: 5

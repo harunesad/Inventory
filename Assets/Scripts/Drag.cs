@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using static UnityEditor.Progress;
 
-public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     RectTransform rect;
     InventorySlot slot, mySlot;
@@ -21,6 +21,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public void OnBeginDrag(PointerEventData eventData)
     {
         drag = true;
+        transform.parent = transform.parent.parent;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -48,38 +49,79 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (slot.items == null && slot.weapons == null && slot.armour == null)
             {
-                if (mySlot.items != null)
+                if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem))
                 {
-                    inventory.ItemSlotUpdate(slot, int.Parse(mySlot.quantityText.text), mySlot.items.itemImage, mySlot.items.rarityType, mySlot.items);
+                    if (mySlot.weapons != null && mySlot.weapons.type == equipItem.type)
+                    {
+                        inventory.WeaponSlotUpdate(slot, 1, mySlot.weapons.weaponImage, mySlot.weapons.rarityType, mySlot.level, mySlot.durability, mySlot.weapons);
+                        inventory.SlotReset(mySlot);
+                        equipItem.Equip();
+                    }
+                    else if (mySlot.armour != null && mySlot.armour.type == equipItem.type)
+                    {
+                        inventory.ArmourSlotUpdate(slot, 1, mySlot.armour.armourImage, mySlot.armour.rarityType, mySlot.level, mySlot.durability, mySlot.armour);
+                        inventory.SlotReset(mySlot);
+                        equipItem.Equip();
+                    }
                 }
-                else if (mySlot.weapons != null)
+                else
                 {
-                    inventory.WeaponSlotUpdate(slot, 1, mySlot.weapons.weaponImage, mySlot.weapons.rarityType, mySlot.level, mySlot.durability, mySlot.weapons);
+                    if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip))
+                    {
+                        equip.Unequip();
+                    }
+                    if (mySlot.items != null)
+                    {
+                        inventory.ItemSlotUpdate(slot, int.Parse(mySlot.quantityText.text), mySlot.items.itemImage, mySlot.items.rarityType, mySlot.items);
+                        inventory.SlotReset(mySlot);
+                    }
+                    else if (mySlot.weapons != null)
+                    {
+                        inventory.WeaponSlotUpdate(slot, 1, mySlot.weapons.weaponImage, mySlot.weapons.rarityType, mySlot.level, mySlot.durability, mySlot.weapons);
+                        inventory.SlotReset(mySlot);
+                    }
+                    else if (mySlot.armour != null)
+                    {
+                        inventory.ArmourSlotUpdate(slot, 1, mySlot.armour.armourImage, mySlot.armour.rarityType, mySlot.level, mySlot.durability, mySlot.armour);
+                        inventory.SlotReset(mySlot);
+                    }
+                    inventory.SlotReset(mySlot);
                 }
-                else if (mySlot.armour != null)
-                {
-                    inventory.ArmourSlotUpdate(slot, 1, mySlot.armour.armourImage, mySlot.armour.rarityType, mySlot.level, mySlot.durability, mySlot.armour);
-                }
-                inventory.SlotReset(mySlot);
             }
             else
             {
-                inventory.SwitchSlot(mySlot, slot);
+                if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && mySlot.items == null)
+                {
+                    if (mySlot.weapons != null && mySlot.weapons.type == equipItem.type)
+                    {
+                        inventory.SwitchSlot(mySlot, slot);
+                    }
+                    else if (mySlot.armour != null && mySlot.armour.type == equipItem.type)
+                    {
+                        inventory.SwitchSlot(mySlot, slot);
+                    }
+                }
+                else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && slot.items == null)
+                {
+                    if (slot.weapons != null && slot.weapons.type == equip.type)
+                    {
+                        inventory.SwitchSlot(mySlot, slot);
+                    }
+                    else if (slot.armour != null && slot.armour.type == equip.type)
+                    {
+                        inventory.SwitchSlot(mySlot, slot);
+                    }
+                }
+                else
+                {
+                    inventory.SwitchSlot(mySlot, slot);
+                }
             }
-            Debug.Log(eventData.pointerDrag.name + " " + eventData.pointerEnter.name);
         }
+        transform.parent = mySlot.transform;
         rect.position = startPos;
-        //if (eventData.)
-        //{
-
-        //}
         isSlot = false;
     }
-    public void OnDrop(PointerEventData eventData)
-    {
-        //Debug.Log(eventData.pointerDrag.name + " " + eventData.pointerEnter.name);
-    }
-
     //Surukleme islemleri olacak 
     // Start is called before the first frame update
     void Start()

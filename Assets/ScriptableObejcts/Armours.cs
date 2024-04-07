@@ -13,15 +13,7 @@ public class Armours : ScriptableObject
     public float durability;
     public int levelIndex;
     public List<ArmourLevels> levelData;
-    public enum ArmourType
-    {
-        HeadArmour,
-        ArmArmour,
-        BodyArmour,
-        LegArmour,
-        Shield
-    }
-    public ArmourType armourType;
+    public EquipType.Type type;
 }
 [System.Serializable]
 public class ArmourLevels
