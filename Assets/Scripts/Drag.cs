@@ -8,6 +8,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 {
     RectTransform rect;
     InventorySlot slot, mySlot;
+    DropItem drop;
     Vector3 startPos;
     bool isSlot;
     [SerializeField] Inventory inventory;
@@ -20,13 +21,19 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public bool drag;
     public void OnBeginDrag(PointerEventData eventData)
     {
-        drag = true;
-        transform.parent = transform.parent.parent;
+        if (mySlot.items != null || mySlot.weapons != null || mySlot.armour != null)
+        {
+            drag = true;
+            transform.parent = transform.parent.parent;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rect.position = eventData.position;
+        if (mySlot.items != null || mySlot.weapons != null || mySlot.armour != null)
+        {
+            rect.position = eventData.position;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -43,6 +50,10 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 this.slot = slot;
                 isSlot = true;
+            }
+            else if (result.gameObject.TryGetComponent<DropItem>(out DropItem dropItem))
+            {
+                drop = dropItem;
             }
         }
         if (isSlot)
@@ -117,6 +128,12 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     inventory.SwitchSlot(mySlot, slot);
                 }
             }
+        }
+        else if (drop && !mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip))
+        {
+            Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position + (Vector3.forward * 2);
+            drop.Drop(mySlot.items, mySlot.weapons, mySlot.armour, playerPos + (Vector3.up * .5f), int.Parse(mySlot.quantityText.text), mySlot.level, mySlot.durability);
+            inventory.SlotReset(mySlot);
         }
         transform.parent = mySlot.transform;
         rect.position = startPos;

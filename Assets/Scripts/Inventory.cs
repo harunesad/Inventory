@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            if (transform.GetChild(i).GetComponent<InventorySlot>() != null)
+            if (transform.GetChild(i).TryGetComponent<InventorySlot>(out InventorySlot slot) && !transform.GetChild(i).TryGetComponent<EquipItem>(out EquipItem equipItem))
             {
                 slots.Add(transform.GetChild(i).GetComponent<InventorySlot>());
             }

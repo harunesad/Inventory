@@ -5,11 +5,11 @@ using UnityEngine;
 public class ItemCollect : MonoBehaviour
 {
     public Items items;
-    [SerializeField] Inventory inventory;
-    [SerializeField] int quantity;
+    Inventory inventory;
+    public int quantity;
     void Start()
     {
-        
+        inventory = FindObjectOfType<InventoryManager>().mainInventory;
     }
 
     // Update is called once per frame
@@ -17,9 +17,9 @@ public class ItemCollect : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             inventory.ItemSlotUpdate(null, quantity, items.itemImage, items.rarityType, items);
             gameObject.SetActive(false);

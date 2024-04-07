@@ -15,7 +15,7 @@ MonoBehaviour:
   armourName: Helmet1
   description: "Kaday\u0131 s\xFCper korur"
   armourImage: {fileID: 21300000, guid: 686161071ef7775448055f798bea6d70, type: 3}
-  prefab: {fileID: 216043043027239904, guid: b2ca064993d295c48bc82d03be79531a, type: 3}
+  prefab: {fileID: 3049508611062440996, guid: b1f554526c9229d43b45af1d8e02af3d, type: 3}
   rarityType: 0
   durability: 100
   levelIndex: 0

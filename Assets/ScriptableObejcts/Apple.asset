@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Apple
   description: Can iyilestirir.
   itemImage: {fileID: 21300000, guid: adaac68d8e5d693499597113889d11d3, type: 3}
-  prefab: {fileID: 919132149155446097, guid: 8a4aa8011446a5d409ec1e4d3549b583, type: 3}
+  prefab: {fileID: 2564452506704873689, guid: 1d1b60746fc48da42a3293d063e847c5, type: 3}
   rarityType: 0
   maxStock: 20
   sellPrice: 1

@@ -7,10 +7,10 @@ public class ArmourCollect : MonoBehaviour
     public int level;
     public float durability;
     public Armours armour;
-    [SerializeField] Inventory inventory;
+    Inventory inventory;
     void Start()
     {
-        
+        inventory = FindObjectOfType<InventoryManager>().mainInventory;
     }
 
     // Update is called once per frame
@@ -18,9 +18,9 @@ public class ArmourCollect : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             inventory.ArmourSlotUpdate(null, 1, armour.armourImage, armour.rarityType, level, durability, armour);
             gameObject.SetActive(false);
