@@ -150,11 +150,11 @@ public class Inventory : MonoBehaviour
 
         if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && mySlot.items == null)
         {
-            equipItem.Unequip();
+            equipItem.Unequip(changeSlot);
         }
         else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem1) && changeSlot.items == null)
         {
-            equipItem1.Unequip();
+            equipItem1.Unequip(mySlot);
         }
 
         //mySlot.quantityText.text = changeSlot.quantityText.text;
@@ -197,11 +197,11 @@ public class Inventory : MonoBehaviour
 
         if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && mySlot.items == null)
         {
-            equip.Equip();
+            equip.Equip(changeSlot);
         }
         else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip1) && changeSlot.items == null)
         {
-            equip1.Equip();
+            equip1.Equip(mySlot);
         }
     }
 }

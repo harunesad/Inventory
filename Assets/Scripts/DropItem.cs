@@ -15,22 +15,22 @@ public class DropItem : MonoBehaviour
     {
         
     }
-    public void Drop(Items item, Weapons weapons, Armours armours, Vector3 pos, int quantity, int level, float durability)
+    public void Drop(InventorySlot mySlot, Vector3 pos, int quantity, int level, float durability)
     {
-        if (item != null)
+        if (mySlot.items != null)
         {
-            var newItem = Instantiate(item.prefab, pos, Quaternion.identity);
+            var newItem = Instantiate(mySlot.items.prefab, pos, Quaternion.identity);
             newItem.GetComponent<ItemCollect>().quantity = quantity;
         }
-        else if (weapons != null)
+        else if (mySlot.weapons != null)
         {
-            var newWeapon = Instantiate(weapons.prefab, pos, Quaternion.identity);
+            var newWeapon = Instantiate(mySlot.weapons.prefab, pos, Quaternion.identity);
             newWeapon.GetComponent<WeaponCollect>().level = level;
             newWeapon.GetComponent<WeaponCollect>().durability = durability;
         }
-        else if (armours != null)
+        else if (mySlot.armour != null)
         {
-            var newArmour = Instantiate(armours.prefab, pos, Quaternion.identity);
+            var newArmour = Instantiate(mySlot.armour.prefab, pos, Quaternion.identity);
             newArmour.GetComponent<ArmourCollect>().level = level;
             newArmour.GetComponent<ArmourCollect>().durability = durability;
         }
