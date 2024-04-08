@@ -4,8 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
-public class InventorySlot : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler
 {
     public Image itemImage, rarityImage;
     public TextMeshProUGUI quantityText, equippedText;
@@ -17,8 +18,8 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
     [SerializeField] ItemDetails itemDetails;
     [SerializeField] WeaponDetails weaponDetails;
     [SerializeField] ArmourDetails armourDetails;
-
-    public void OnPointerDown(PointerEventData eventData)
+    int clickCount;
+    public void OnPointerEnter(PointerEventData eventData)
     {
         if (armour != null && !GetComponentInChildren<Drag>().drag)
         {
@@ -39,7 +40,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
         }
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData)
     {
         armourDetails.gameObject.SetActive(false);
         weaponDetails.gameObject.SetActive(false);
@@ -57,5 +58,54 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
     void Update()
     {
         
+    }
+    public void DoubleClick()
+    {
+        if (items != null)
+        {
+            clickCount++;
+            Debug.Log(clickCount);
+        }
+        else if (weapons != null || armour != null)
+        {
+            EquipType.Type type = weapons != null ? weapons.type : armour.type;
+            switch (type)
+            {
+                case EquipType.Type.HeadArmour:
+                    break;
+                case EquipType.Type.ArmArmour:
+                    break;
+                case EquipType.Type.BodyArmour:
+                    break;
+                case EquipType.Type.LegArmour:
+                    break;
+                case EquipType.Type.Shield:
+                    break;
+                case EquipType.Type.Weapon:
+                    break;
+                default:
+                    break;
+            }
+            clickCount = 0;
+        }
+        else
+        {
+            clickCount = 0;
+        }
+        StartCoroutine(CountReset());
+    }
+    IEnumerator CountReset()
+    {
+        if (clickCount == 2)
+        {
+            FindObjectOfType<InventoryManager>().use.Use(this);
+            quantityText.text = (int.Parse(quantityText.text) - 1).ToString();
+            if (int.Parse(quantityText.text) == 0)
+            {
+                GetComponentInParent<Inventory>().SlotReset(this);
+            }
+        }
+        yield return new WaitForSecondsRealtime(.25f);
+        clickCount = 0;
     }
 }

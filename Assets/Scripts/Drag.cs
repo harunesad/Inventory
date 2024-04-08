@@ -9,7 +9,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     RectTransform rect;
     InventorySlot slot, mySlot;
     DropItem drop;
-    UseItem item;
+    UseItem use;
     Vector3 startPos;
     bool isSlot;
     [SerializeField] Inventory inventory;
@@ -58,7 +58,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             }
             else if (result.gameObject.TryGetComponent<UseItem>(out UseItem useItem))
             {
-                item = useItem;
+                use = useItem;
             }
         }
         if (isSlot)
@@ -71,20 +71,20 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     {
                         inventory.WeaponSlotUpdate(slot, 1, mySlot.weapons.weaponImage, mySlot.weapons.rarityType, mySlot.level, mySlot.durability, mySlot.weapons);
                         inventory.SlotReset(mySlot);
-                        equipItem.Equip(slot);
+                        equipItem.Equip();
                     }
                     else if (mySlot.armour != null && mySlot.armour.type == equipItem.type)
                     {
                         inventory.ArmourSlotUpdate(slot, 1, mySlot.armour.armourImage, mySlot.armour.rarityType, mySlot.level, mySlot.durability, mySlot.armour);
                         inventory.SlotReset(mySlot);
-                        equipItem.Equip(slot);
+                        equipItem.Equip();
                     }
                 }
                 else
                 {
                     if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip))
                     {
-                        equip.Unequip(mySlot);
+                        equip.Unequip();
                     }
                     if (mySlot.items != null)
                     {
@@ -128,7 +128,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                         inventory.SwitchSlot(mySlot, slot);
                     }
                 }
-                else
+                else if (mySlot != slot)
                 {
                     inventory.SwitchSlot(mySlot, slot);
                 }
@@ -140,13 +140,12 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             drop.Drop(mySlot, playerPos + (Vector3.up * .5f), int.Parse(mySlot.quantityText.text), mySlot.level, mySlot.durability);
             inventory.SlotReset(mySlot);
         }
-        else if (item && mySlot.items != null)
+        else if (use && mySlot.items != null)
         {
-            item.Use(mySlot);
+            use.Use(mySlot);
             mySlot.quantityText.text = (int.Parse(mySlot.quantityText.text) - 1).ToString();
             if (int.Parse(mySlot.quantityText.text) == 0)
             {
-                Debug.Log("sadsad");
                 inventory.SlotReset(mySlot);
             }
         }

@@ -6,6 +6,8 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] CanvasGroup ýnventoryPanel;
     public Inventory mainInventory;
+    public UseItem use;
+    public CanvasGroup interact;
     //Inventoryler slotlari arasindaki degis tokus
     // Start is called before the first frame update
     void Start()

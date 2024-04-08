@@ -15,11 +15,11 @@ public class EquipItem : MonoBehaviour
     {
         
     }
-    public void Equip(InventorySlot mySlot)
+    public void Equip()
     {
         Debug.Log("Equip");
     }
-    public void Unequip(InventorySlot mySlot)
+    public void Unequip()
     {
         Debug.Log("Unequip");
     }

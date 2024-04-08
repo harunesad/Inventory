@@ -8,9 +8,11 @@ public class ArmourCollect : MonoBehaviour
     public float durability;
     public Armours armour;
     Inventory inventory;
+    CanvasGroup interact;
     void Start()
     {
         inventory = FindObjectOfType<InventoryManager>().mainInventory;
+        interact = FindObjectOfType<InventoryManager>().interact;
     }
 
     // Update is called once per frame
@@ -18,12 +20,24 @@ public class ArmourCollect : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            inventory.ArmourSlotUpdate(null, 1, armour.armourImage, armour.rarityType, level, durability, armour);
-            gameObject.SetActive(false);
+            interact.alpha = 1;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                interact.alpha = 0;
+                inventory.ArmourSlotUpdate(null, 1, armour.armourImage, armour.rarityType, level, durability, armour);
+                transform.parent.gameObject.SetActive(false);
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            interact.alpha = 0;
         }
     }
 }
