@@ -157,7 +157,7 @@ public class Inventory : MonoBehaviour
             equipItem1.Unequip();
         }
 
-        mySlot.quantityText.text = changeSlot.quantityText.text;
+        //mySlot.quantityText.text = changeSlot.quantityText.text;
         mySlot.itemImage.sprite = changeSlot.itemImage.sprite;
         mySlot.rarityImage.sprite = changeSlot.rarityImage.sprite;
         mySlot.items = changeSlot.items;
@@ -166,7 +166,7 @@ public class Inventory : MonoBehaviour
         mySlot.level = changeSlot.level;
         mySlot.durability = changeSlot.durability;
 
-        changeSlot.quantityText.text = quantity;
+        //changeSlot.quantityText.text = quantity;
         changeSlot.itemImage.sprite = itemImage;
         changeSlot.rarityImage.sprite = rarityImage;
         changeSlot.items = items;
@@ -174,6 +174,26 @@ public class Inventory : MonoBehaviour
         changeSlot.armour = armour;
         changeSlot.level = level;
         changeSlot.durability = durability;
+
+        if (mySlot.items != null && changeSlot.items != null && changeSlot.items == mySlot.items)
+        {
+            int newQuantity = int.Parse(changeSlot.quantityText.text) + int.Parse(quantity);
+            changeSlot.quantityText.text = newQuantity > changeSlot.items.maxStock ? changeSlot.items.maxStock.ToString() : newQuantity.ToString();
+            newQuantity -= int.Parse(changeSlot.quantityText.text);
+            if (newQuantity <= 0)
+            {
+                SlotReset(mySlot);
+            }
+            else
+            {
+                mySlot.quantityText.text = newQuantity.ToString();
+            }
+        }
+        else
+        {
+            mySlot.quantityText.text = changeSlot.quantityText.text;
+            changeSlot.quantityText.text = quantity;
+        }
 
         if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && mySlot.items == null)
         {
