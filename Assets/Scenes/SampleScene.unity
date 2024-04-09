@@ -651,6 +651,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &89762178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3691,6 +3692,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &423821969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4060,6 +4062,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &450846302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4244,6 +4247,7 @@ GameObject:
   - component: {fileID: 547900815}
   - component: {fileID: 547900814}
   - component: {fileID: 547900813}
+  - component: {fileID: 547900817}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4335,6 +4339,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &547900817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547900812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf74f3a9932abd64cb8a456e514e5dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interact: {fileID: 246202724}
+  message: {fileID: 579284625}
 --- !u!1 &562462607
 GameObject:
   m_ObjectHideFlags: 0
@@ -5399,6 +5417,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &660199227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5462,6 +5481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apple (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3336801771536577427, guid: 1d1b60746fc48da42a3293d063e847c5, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 547900817}
     - target: {fileID: 6801090224392434521, guid: 1d1b60746fc48da42a3293d063e847c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08798915
@@ -6117,6 +6140,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &718284935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6993,6 +7017,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &869647859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7880,6 +7905,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &997656608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8122,6 +8148,140 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 1872041530}
   drag: 0
+--- !u!1 &1040911406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1040911410}
+  - component: {fileID: 1040911409}
+  - component: {fileID: 1040911408}
+  - component: {fileID: 1040911407}
+  - component: {fileID: 1040911411}
+  m_Layer: 0
+  m_Name: Shop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &1040911407
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040911406}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1040911408
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040911406}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 50fb9c49bdbb0f0448fbcdbb5d7211d0, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1040911409
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040911406}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1040911410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040911406}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.645811, y: 0.5, z: -3.365819}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1140602569}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1040911411
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040911406}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1044440449
 GameObject:
   m_ObjectHideFlags: 0
@@ -8185,6 +8345,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &1044440452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8958,6 +9119,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127339472}
   m_CullTransparentMesh: 1
+--- !u!1 &1140602568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140602569}
+  - component: {fileID: 1140602571}
+  m_Layer: 0
+  m_Name: Zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1140602569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140602568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1040911410}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1140602571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140602568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &1155162301
 GameObject:
   m_ObjectHideFlags: 0
@@ -10351,6 +10565,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &1328189555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10795,6 +11010,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &1481458979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11723,6 +11939,53 @@ MonoBehaviour:
   mainInventory: {fileID: 1872041530}
   use: {fileID: 37393426}
   interact: {fileID: 246202724}
+  headArmour: {fileID: 718284934}
+  armArmour: {fileID: 1915181790}
+  bodyArmour: {fileID: 1707168521}
+  legArmour: {fileID: 89762177}
+  shield: {fileID: 869647858}
+  weapon: {fileID: 660199226}
+  inventoryStart:
+  - items: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    weapons: {fileID: 0}
+    armours: {fileID: 0}
+    index: 4
+    equip: 0
+    durability: 0
+    level: 0
+    quantity: 4
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 8e81e7651f82fa0449fc5f6b0111b8af, type: 2}
+    index: 5
+    equip: 1
+    durability: 0
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    index: 2
+    equip: 1
+    durability: 0
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    index: 1
+    equip: 0
+    durability: 0
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    index: 6
+    equip: 0
+    durability: 0
+    level: 0
+    quantity: 0
 --- !u!1 &1707168519
 GameObject:
   m_ObjectHideFlags: 0
@@ -11787,6 +12050,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &1707168522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12123,6 +12387,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &1804710493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12737,6 +13002,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!114 &1915181791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13415,6 +13681,7 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
+  inventoryManager: {fileID: 0}
 --- !u!1 &2091456755
 GameObject:
   m_ObjectHideFlags: 0
@@ -14088,6 +14355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 3336801771536577427, guid: 1d1b60746fc48da42a3293d063e847c5, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 547900817}
     - target: {fileID: 6801090224392434521, guid: 1d1b60746fc48da42a3293d063e847c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08798915
@@ -14141,6 +14412,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 240515217812307908, guid: b1f554526c9229d43b45af1d8e02af3d, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 547900817}
     - target: {fileID: 738177051332765089, guid: b1f554526c9229d43b45af1d8e02af3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14198,6 +14473,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 493763617890498086, guid: fc212cf40fc8edd40a4ea525b0b3d660, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 493763617890498086, guid: fc212cf40fc8edd40a4ea525b0b3d660, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593885759704643917, guid: fc212cf40fc8edd40a4ea525b0b3d660, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 547900817}
     - target: {fileID: 5010864422131238570, guid: fc212cf40fc8edd40a4ea525b0b3d660, type: 3}
       propertyPath: m_Name
       value: Helmet
@@ -14295,6 +14582,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4168958194460861473, guid: 60433841f8dd66f479f1d33490ea0bd3, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 547900817}
     - target: {fileID: 4287720989531036473, guid: 60433841f8dd66f479f1d33490ea0bd3, type: 3}
       propertyPath: m_Name
       value: Sword
@@ -14320,3 +14611,4 @@ SceneRoots:
   - {fileID: 8432153746553616983}
   - {fileID: 6807093871954208904}
   - {fileID: 6628618532495033941}
+  - {fileID: 1040911410}

@@ -5,13 +5,12 @@ using UnityEngine;
 public class ItemCollect : MonoBehaviour
 {
     public Items items;
-    Inventory inventory;
     public int quantity;
-    CanvasGroup interact;
+    Inventory inventory;
+    [SerializeField] UIManager uIManager;
     void Start()
     {
         inventory = FindObjectOfType<InventoryManager>().mainInventory;
-        interact = FindObjectOfType<InventoryManager>().interact;
     }
 
     // Update is called once per frame
@@ -23,10 +22,10 @@ public class ItemCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interact.alpha = 1;
+            uIManager.InteractActive("Collect");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                interact.alpha = 0;
+                uIManager.InteractPassive();
                 inventory.ItemSlotUpdate(null, quantity, items.itemImage, items.rarityType, items);
                 transform.parent.gameObject.SetActive(false);
             }
@@ -36,7 +35,7 @@ public class ItemCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interact.alpha = 0;
+            uIManager.InteractPassive();
         }
     }
 }

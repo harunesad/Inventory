@@ -8,13 +8,63 @@ public class InventoryManager : MonoBehaviour
     public Inventory mainInventory;
     public UseItem use;
     public CanvasGroup interact;
+    public InventorySlot headArmour, armArmour, bodyArmour, legArmour, shield, weapon;
+    [SerializeField] List<InventoryStart> inventoryStart;
     //Inventoryler slotlari arasindaki degis tokus
     // Start is called before the first frame update
     void Start()
     {
-        
+        Invoke("WaitStart", 2);
     }
-
+    void WaitStart()
+    {
+        for (int i = 0; i < inventoryStart.Count; i++)
+        {
+            InventorySlot mySlot = mainInventory.slots[inventoryStart[i].index];
+            if (inventoryStart[i].items != null)
+            {
+                mainInventory.ItemSlotUpdate(mySlot, inventoryStart[i].quantity, inventoryStart[i].items.itemImage, inventoryStart[i].items.rarityType,
+                    inventoryStart[i].items);
+            }
+            else if (inventoryStart[i].weapons != null)
+            {
+                mainInventory.WeaponSlotUpdate(mySlot, 1, inventoryStart[i].weapons.weaponImage, inventoryStart[i].weapons.rarityType, inventoryStart[i].level
+                    , inventoryStart[i].durability, inventoryStart[i].weapons);
+                if (inventoryStart[i].equip)
+                {
+                    mainInventory.SwitchSlot(mySlot, weapon);
+                }
+            }
+            else if (inventoryStart[i].armours != null)
+            {
+                mainInventory.ArmourSlotUpdate(mySlot, 1, inventoryStart[i].armours.armourImage, inventoryStart[i].armours.rarityType, inventoryStart[i].level,
+                    inventoryStart[i].durability, inventoryStart[i].armours);
+                if (inventoryStart[i].equip)
+                {
+                    switch (mySlot.armour.type)
+                    {
+                        case EquipType.Type.HeadArmour:
+                            mainInventory.SwitchSlot(mySlot, headArmour);
+                            break;
+                        case EquipType.Type.ArmArmour:
+                            mainInventory.SwitchSlot(mySlot, armArmour);
+                            break;
+                        case EquipType.Type.BodyArmour:
+                            mainInventory.SwitchSlot(mySlot, bodyArmour);
+                            break;
+                        case EquipType.Type.LegArmour:
+                            mainInventory.SwitchSlot(mySlot, legArmour);
+                            break;
+                        case EquipType.Type.Shield:
+                            mainInventory.SwitchSlot(mySlot, shield);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -23,4 +73,16 @@ public class InventoryManager : MonoBehaviour
             ýnventoryPanel.alpha = (ýnventoryPanel.alpha == 0) ? 1 : 0;
         }
     }
+}
+[System.Serializable]
+public class InventoryStart
+{
+    public Items items;
+    public Weapons weapons;
+    public Armours armours;
+    public int index;
+    public bool equip;
+    public float durability;
+    public int level;
+    public int quantity;
 }

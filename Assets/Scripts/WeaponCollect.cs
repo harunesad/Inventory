@@ -8,11 +8,10 @@ public class WeaponCollect : MonoBehaviour
     public float durability;
     public Weapons weapons;
     Inventory inventory;
-    CanvasGroup interact;
+    [SerializeField] UIManager uIManager;
     void Start()
     {
         inventory = FindObjectOfType<InventoryManager>().mainInventory;
-        interact = FindObjectOfType<InventoryManager>().interact;
     }
 
     // Update is called once per frame
@@ -24,10 +23,10 @@ public class WeaponCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interact.alpha = 1;
+            uIManager.InteractActive("Collect");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                interact.alpha = 0;
+                uIManager.InteractPassive();
                 inventory.WeaponSlotUpdate(null, 1, weapons.weaponImage, weapons.rarityType, level, durability, weapons);
                 transform.parent.gameObject.SetActive(false);
             }
@@ -37,7 +36,7 @@ public class WeaponCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interact.alpha = 0;
+            uIManager.InteractPassive();
         }
     }
 }
