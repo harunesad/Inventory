@@ -7,10 +7,11 @@ public class ItemCollect : MonoBehaviour
     public Items items;
     public int quantity;
     Inventory inventory;
-    [SerializeField] UIManager uIManager;
+    UIManager uIManager;
     void Start()
     {
         inventory = FindObjectOfType<InventoryManager>().mainInventory;
+        uIManager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame

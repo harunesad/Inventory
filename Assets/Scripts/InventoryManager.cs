@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] CanvasGroup ýnventoryPanel;
+    [SerializeField] CanvasGroup ýnventoryPanel, shopPanel;
     public Inventory mainInventory;
     public UseItem use;
     public CanvasGroup interact;
     public InventorySlot headArmour, armArmour, bodyArmour, legArmour, shield, weapon;
+    public GameObject select, selection;
+    public InventorySlot selectSlot;
     [SerializeField] List<InventoryStart> inventoryStart;
+    Vector3 selectPos, selectionPos;
     //Inventoryler slotlari arasindaki degis tokus
     // Start is called before the first frame update
     void Start()
     {
+        selectPos = select.GetComponent<RectTransform>().position;
+        selectionPos = selection.GetComponent<RectTransform>().position;
         Invoke("WaitStart", 2);
     }
     void WaitStart()
@@ -70,7 +75,10 @@ public class InventoryManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
+            select.GetComponent<RectTransform>().position = selectPos;
+            selection.GetComponent<RectTransform>().position = selectionPos;
             ýnventoryPanel.alpha = (ýnventoryPanel.alpha == 0) ? 1 : 0;
+            shopPanel.alpha = 0;
         }
     }
 }

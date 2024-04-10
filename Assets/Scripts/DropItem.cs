@@ -20,19 +20,19 @@ public class DropItem : MonoBehaviour
         if (mySlot.items != null)
         {
             var newItem = Instantiate(mySlot.items.prefab, pos, Quaternion.identity);
-            newItem.GetComponent<ItemCollect>().quantity = quantity;
+            newItem.GetComponentInChildren<ItemCollect>().quantity = quantity;
         }
         else if (mySlot.weapons != null)
         {
             var newWeapon = Instantiate(mySlot.weapons.prefab, pos, Quaternion.identity);
-            newWeapon.GetComponent<WeaponCollect>().level = level;
-            newWeapon.GetComponent<WeaponCollect>().durability = durability;
+            newWeapon.GetComponentInChildren<WeaponCollect>().level = level;
+            newWeapon.GetComponentInChildren<WeaponCollect>().durability = durability;
         }
         else if (mySlot.armour != null)
         {
             var newArmour = Instantiate(mySlot.armour.prefab, pos, Quaternion.identity);
-            newArmour.GetComponent<ArmourCollect>().level = level;
-            newArmour.GetComponent<ArmourCollect>().durability = durability;
+            newArmour.GetComponentInChildren<ArmourCollect>().level = level;
+            newArmour.GetComponentInChildren<ArmourCollect>().durability = durability;
         }
     }
 }

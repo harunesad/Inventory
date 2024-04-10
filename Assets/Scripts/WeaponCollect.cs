@@ -8,10 +8,11 @@ public class WeaponCollect : MonoBehaviour
     public float durability;
     public Weapons weapons;
     Inventory inventory;
-    [SerializeField] UIManager uIManager;
+    UIManager uIManager;
     void Start()
     {
         inventory = FindObjectOfType<InventoryManager>().mainInventory;
+        uIManager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame

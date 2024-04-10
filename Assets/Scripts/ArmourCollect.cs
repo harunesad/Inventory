@@ -8,10 +8,11 @@ public class ArmourCollect : MonoBehaviour
     public float durability;
     public Armours armour;
     Inventory inventory;
-    [SerializeField] UIManager uIManager;
+    UIManager uIManager;
     void Start()
     {
         inventory = FindObjectOfType<InventoryManager>().mainInventory;
+        uIManager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame

@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
 {
     public List<InventorySlot> slots = new List<InventorySlot>();
     [SerializeField] Sprite common, rare, legendary;
+    public bool isMine, shop;
     //Player inventory sindeki inventory slotlar arasinda degis tokus ve item collect de slot update
     // Start is called before the first frame update
     void Start()

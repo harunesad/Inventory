@@ -12,20 +12,24 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     UseItem use;
     Vector3 startPos;
     bool isSlot;
-    [SerializeField] Inventory inventory;
+    Inventory inventory;
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
         startPos = rect.position;
         mySlot = GetComponentInParent<InventorySlot>();
+        inventory = GetComponentInParent<Inventory>();
     }
     public bool drag;
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (mySlot.items != null || mySlot.weapons != null || mySlot.armour != null)
         {
+            mySlot.armourDetails.gameObject.SetActive(false);
+            mySlot.weaponDetails.gameObject.SetActive(false);
+            mySlot.itemDetails.gameObject.SetActive(false);
             drag = true;
-            transform.parent = transform.parent.parent;
+            transform.parent = transform.parent.parent.parent;
         }
     }
 
@@ -65,7 +69,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (slot.items == null && slot.weapons == null && slot.armour == null)
             {
-                if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem))
+                if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && inventory.isMine)
                 {
                     if (mySlot.weapons != null && mySlot.weapons.type == equipItem.type)
                     {
@@ -86,6 +90,10 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     {
                         equip.Unequip();
                     }
+                    if (mySlot.GetComponentInParent<Inventory>().shop || slot.GetComponentInParent<Inventory>().shop)
+                    {
+
+                    }
                     if (mySlot.items != null)
                     {
                         inventory.ItemSlotUpdate(slot, int.Parse(mySlot.quantityText.text), mySlot.items.itemImage, mySlot.items.rarityType, mySlot.items);
@@ -101,10 +109,9 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                         inventory.ArmourSlotUpdate(slot, 1, mySlot.armour.armourImage, mySlot.armour.rarityType, mySlot.level, mySlot.durability, mySlot.armour);
                         inventory.SlotReset(mySlot);
                     }
-                    inventory.SlotReset(mySlot);
                 }
             }
-            else
+            else if (inventory.isMine && !slot.GetComponentInParent<Inventory>().shop)
             {
                 if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && mySlot.items == null)
                 {
@@ -134,13 +141,13 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 }
             }
         }
-        else if (drop && !mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip))
+        else if (drop && !mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && inventory.isMine)
         {
             Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position + (Vector3.forward * 2);
             drop.Drop(mySlot, playerPos + (Vector3.up * .5f), int.Parse(mySlot.quantityText.text), mySlot.level, mySlot.durability);
             inventory.SlotReset(mySlot);
         }
-        else if (use && mySlot.items != null)
+        else if (use && mySlot.items != null && inventory.isMine)
         {
             use.Use(mySlot);
             mySlot.quantityText.text = (int.Parse(mySlot.quantityText.text) - 1).ToString();

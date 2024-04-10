@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    RectTransform rect;
     public Image itemImage, rarityImage;
     public TextMeshProUGUI quantityText, equippedText;
     public float durability;
@@ -16,34 +17,48 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler,IPointerExitHan
     public Weapons weapons;
     public Items items;
     Drag drag;
-    [SerializeField] ItemDetails itemDetails;
-    [SerializeField] WeaponDetails weaponDetails;
-    [SerializeField] ArmourDetails armourDetails;
-    [SerializeField] InventoryManager inventoryManager;
+    public ItemDetails itemDetails;
+    public WeaponDetails weaponDetails;
+    public ArmourDetails armourDetails;
+    InventoryManager inventoryManager;
+    Inventory inventory;
     int useClickCount, equipClickCount;
-    void Start()
+    void Awake()
     {
+        rect = GetComponent<RectTransform>();
         drag = GetComponentInChildren<Drag>();
         inventoryManager = FindObjectOfType<InventoryManager>();
+        inventory = GetComponentInParent<Inventory>();
+    }
+    private void Start()
+    {
+        if (drag.TryGetComponent<Button>(out Button button))
+        {
+            button.onClick.AddListener(SlotSelect);
+        }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (armour != null && !drag.drag)
+        if (!inventory.TryGetComponent<CanvasGroup>(out CanvasGroup canvasGroup) || inventory.GetComponent<CanvasGroup>().alpha == 1)
         {
-            armourDetails.gameObject.SetActive(true);
-            armourDetails.DetailsUpdate(armour.armourName, armour.description, quantityText.text, durability / 100, armour.levelData[level].sellPrice,
-                armour.levelData[level].buyPrice, armour.levelData[level].armour, armour.levelData[level].addHealth, rarityImage, itemImage);
-        }
-        else if (weapons != null && !drag.drag)
-        {
-            weaponDetails.gameObject.SetActive(true);
-            weaponDetails.DetailsUpdate(weapons.weaponName, weapons.description, quantityText.text, durability / 100, weapons.levelData[level].sellPrice,
-                weapons.levelData[level].buyPrice, weapons.levelData[level].attack, weapons.levelData[level].attackSpeed, rarityImage, itemImage);
-        }
-        else if (items != null && !drag.drag)
-        {
-            itemDetails.gameObject.SetActive(true);
-            itemDetails.DetailsUpdate(items.itemName, items.description, quantityText.text, items.maxStock, items.sellPrice, items.buyPrice, rarityImage, itemImage);
+            inventoryManager.selection.GetComponent<RectTransform>().position = rect.position;
+            if (armour != null && !drag.drag)
+            {
+                armourDetails.gameObject.SetActive(true);
+                armourDetails.DetailsUpdate(armour.armourName, armour.description, quantityText.text, durability / 100, armour.levelData[level].sellPrice,
+                    armour.levelData[level].buyPrice, armour.levelData[level].armour, armour.levelData[level].addHealth, rarityImage, itemImage);
+            }
+            else if (weapons != null && !drag.drag)
+            {
+                weaponDetails.gameObject.SetActive(true);
+                weaponDetails.DetailsUpdate(weapons.weaponName, weapons.description, quantityText.text, durability / 100, weapons.levelData[level].sellPrice,
+                    weapons.levelData[level].buyPrice, weapons.levelData[level].attack, weapons.levelData[level].attackSpeed, rarityImage, itemImage);
+            }
+            else if (items != null && !drag.drag)
+            {
+                itemDetails.gameObject.SetActive(true);
+                itemDetails.DetailsUpdate(items.itemName, items.description, quantityText.text, items.maxStock, items.sellPrice, items.buyPrice, rarityImage, itemImage);
+            }
         }
     }
 
@@ -53,13 +68,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler,IPointerExitHan
         weaponDetails.gameObject.SetActive(false);
         itemDetails.gameObject.SetActive(false);
     }
-
-    //Altindaki degiskenler olacak ve equip, drop, use islemleri olacak
-    // Start is called before the first frame update
-    // Update is called once per frame
-    void Update()
+    void SlotSelect()
     {
-        
+        bool active = !inventory.TryGetComponent<CanvasGroup>(out CanvasGroup canvasGroup) || inventory.GetComponent<CanvasGroup>().alpha == 1;
+        if ((items != null || weapons != null || armour != null) && active)
+        {
+            inventoryManager.selectSlot = this;
+            inventoryManager.select.GetComponent<RectTransform>().position = rect.position;
+        }
     }
     public void DoubleClick()
     {
@@ -67,7 +83,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler,IPointerExitHan
         {
             useClickCount++;
             equipClickCount = 0;
-            Debug.Log(useClickCount);
         }
         else if (weapons != null || armour != null)
         {
@@ -122,5 +137,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler,IPointerExitHan
         yield return new WaitForSecondsRealtime(.25f);
         useClickCount = 0;
         equipClickCount = 0;
+    }
+
+    void Update()
+    {
+
     }
 }
