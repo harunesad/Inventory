@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] CanvasGroup interact;
+    [SerializeField] CanvasGroup interact, notification;
     [SerializeField] TextMeshProUGUI message, coinText;
     [SerializeField] Button refresh;
     [SerializeField] int coin, refreshCost;
@@ -28,6 +28,18 @@ public class UIManager : MonoBehaviour
             coinText.text = coin.ToString();
             shopSystem.RandomShopItems();
         }
+    }
+    public void NotificationActive(string message, Sprite itemSprite)
+    {
+        notification.GetComponentInChildren<TextMeshProUGUI>().text = message;
+        notification.transform.GetChild(0).GetComponent<Image>().sprite = itemSprite;
+        notification.alpha = 1;
+        StartCoroutine(NotificationPassive());
+    }
+    IEnumerator NotificationPassive()
+    {
+        yield return new WaitForSeconds(1);
+        notification.alpha = 0;
     }
     public void InteractActive(string message)
     {

@@ -19,7 +19,7 @@ public class InventoryManager : MonoBehaviour
     {
         selectPos = select.GetComponent<RectTransform>().position;
         selectionPos = selection.GetComponent<RectTransform>().position;
-        Invoke("WaitStart", 2);
+        Invoke("WaitStart", 1);
     }
     void WaitStart()
     {

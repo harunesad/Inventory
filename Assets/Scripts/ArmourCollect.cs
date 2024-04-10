@@ -27,6 +27,7 @@ public class ArmourCollect : MonoBehaviour
             uIManager.InteractActive("Collect");
             if (Input.GetKeyDown(KeyCode.E))
             {
+                uIManager.NotificationActive(armour.name + " collect", armour.armourImage);
                 uIManager.InteractPassive();
                 inventory.ArmourSlotUpdate(null, 1, armour.armourImage, armour.rarityType, level, durability, armour);
                 transform.parent.gameObject.SetActive(false);

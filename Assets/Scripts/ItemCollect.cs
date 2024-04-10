@@ -26,6 +26,7 @@ public class ItemCollect : MonoBehaviour
             uIManager.InteractActive("Collect");
             if (Input.GetKeyDown(KeyCode.E))
             {
+                uIManager.NotificationActive(items.name + " collect", items.itemImage);
                 uIManager.InteractPassive();
                 inventory.ItemSlotUpdate(null, quantity, items.itemImage, items.rarityType, items);
                 transform.parent.gameObject.SetActive(false);
