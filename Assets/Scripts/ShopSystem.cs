@@ -8,14 +8,41 @@ public class ShopSystem : MonoBehaviour
     [SerializeField] Inventory mainInventory;
     [SerializeField] CanvasGroup ýnventoryPanel, shopPanel;
     [SerializeField] List<ShopInventoryStart> inventoryStart, newInventoryStart;
+    [SerializeField] int shopCount;
     void Start()
     {
         //Invoke("WaitStart", 2);
         newInventoryStart.AddRange(inventoryStart);
     }
-    public void WaitStart()
+    void WaitStart()
+    {
+        for (int i = 0; i < shopCount; i++)
+        {
+            InventorySlot mySlot = mainInventory.slots[i];
+            if (inventoryStart[i].items != null)
+            {
+                mainInventory.ItemSlotUpdate(mySlot, inventoryStart[i].quantity, inventoryStart[i].items.itemImage, inventoryStart[i].items.rarityType,
+                    inventoryStart[i].items);
+            }
+            else if (inventoryStart[i].weapons != null)
+            {
+                mainInventory.WeaponSlotUpdate(mySlot, 1, inventoryStart[i].weapons.weaponImage, inventoryStart[i].weapons.rarityType, inventoryStart[i].level
+                    , inventoryStart[i].durability, inventoryStart[i].weapons);
+            }
+            else if (inventoryStart[i].armours != null)
+            {
+                mainInventory.ArmourSlotUpdate(mySlot, 1, inventoryStart[i].armours.armourImage, inventoryStart[i].armours.rarityType, inventoryStart[i].level,
+                    inventoryStart[i].durability, inventoryStart[i].armours);
+            }
+            inventoryStart.RemoveAt(i);
+        }
+        inventoryStart.Clear();
+        inventoryStart.AddRange(newInventoryStart);
+    }
+    public void RandomShopItems()
     {
         int randomSlot = Random.Range(2, mainInventory.slots.Count - 2);
+        shopCount = randomSlot;
         for (int i = 0; i < randomSlot; i++)
         {
             InventorySlot mySlot = mainInventory.slots[i];
@@ -36,6 +63,9 @@ public class ShopSystem : MonoBehaviour
                 mainInventory.ArmourSlotUpdate(mySlot, 1, inventoryStart[random].armours.armourImage, inventoryStart[random].armours.rarityType, inventoryStart[random].level,
                     inventoryStart[random].durability, inventoryStart[random].armours);
             }
+            ShopInventoryStart shopInventoryStart = inventoryStart[inventoryStart.IndexOf(inventoryStart[random])];
+            inventoryStart[inventoryStart.IndexOf(inventoryStart[random])] = inventoryStart[i];
+            inventoryStart[i] = shopInventoryStart;
             inventoryStart.RemoveAt(random);
         }
         inventoryStart.Clear();
@@ -53,9 +83,12 @@ public class ShopSystem : MonoBehaviour
             uIManager.InteractActive("Speak");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                uIManager.shopSystem = this;
                 uIManager.InteractPassive();
-                WaitStart();
+                if (uIManager.shopSystem != this)
+                {
+                    WaitStart();
+                }
+                uIManager.shopSystem = this;
                 shopPanel.alpha = 1;
                 ýnventoryPanel.alpha = 1;
             }

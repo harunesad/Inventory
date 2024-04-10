@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
         {
             coin -= refreshCost;
             coinText.text = coin.ToString();
-            shopSystem.WaitStart();
+            shopSystem.RandomShopItems();
         }
     }
     public void InteractActive(string message)
