@@ -7,32 +7,39 @@ public class ShopSystem : MonoBehaviour
     [SerializeField] UIManager uIManager;
     [SerializeField] Inventory mainInventory;
     [SerializeField] CanvasGroup ýnventoryPanel, shopPanel;
-    [SerializeField] List<ShopInventoryStart> inventoryStart;
+    [SerializeField] List<ShopInventoryStart> inventoryStart, newInventoryStart;
     void Start()
     {
         //Invoke("WaitStart", 2);
+        newInventoryStart.AddRange(inventoryStart);
     }
-    void WaitStart()
+    public void WaitStart()
     {
-        for (int i = 0; i < inventoryStart.Count; i++)
+        int randomSlot = Random.Range(2, mainInventory.slots.Count - 2);
+        for (int i = 0; i < randomSlot; i++)
         {
             InventorySlot mySlot = mainInventory.slots[i];
-            if (inventoryStart[i].items != null)
+            int random = Random.Range(0, inventoryStart.Count);
+            Debug.Log(random);
+            if (inventoryStart[random].items != null)
             {
-                mainInventory.ItemSlotUpdate(mySlot, inventoryStart[i].quantity, inventoryStart[i].items.itemImage, inventoryStart[i].items.rarityType,
-                    inventoryStart[i].items);
+                mainInventory.ItemSlotUpdate(mySlot, inventoryStart[random].quantity, inventoryStart[random].items.itemImage, inventoryStart[random].items.rarityType,
+                    inventoryStart[random].items);
             }
-            else if (inventoryStart[i].weapons != null)
+            else if (inventoryStart[random].weapons != null)
             {
-                mainInventory.WeaponSlotUpdate(mySlot, 1, inventoryStart[i].weapons.weaponImage, inventoryStart[i].weapons.rarityType, inventoryStart[i].level
-                    , inventoryStart[i].durability, inventoryStart[i].weapons);
+                mainInventory.WeaponSlotUpdate(mySlot, 1, inventoryStart[random].weapons.weaponImage, inventoryStart[random].weapons.rarityType, inventoryStart[random].level
+                    , inventoryStart[random].durability, inventoryStart[random].weapons);
             }
-            else if (inventoryStart[i].armours != null)
+            else if (inventoryStart[random].armours != null)
             {
-                mainInventory.ArmourSlotUpdate(mySlot, 1, inventoryStart[i].armours.armourImage, inventoryStart[i].armours.rarityType, inventoryStart[i].level,
-                    inventoryStart[i].durability, inventoryStart[i].armours);
+                mainInventory.ArmourSlotUpdate(mySlot, 1, inventoryStart[random].armours.armourImage, inventoryStart[random].armours.rarityType, inventoryStart[random].level,
+                    inventoryStart[random].durability, inventoryStart[random].armours);
             }
+            inventoryStart.RemoveAt(random);
         }
+        inventoryStart.Clear();
+        inventoryStart.AddRange(newInventoryStart);
     }
     // Update is called once per frame
     void Update()
@@ -46,6 +53,7 @@ public class ShopSystem : MonoBehaviour
             uIManager.InteractActive("Speak");
             if (Input.GetKeyDown(KeyCode.E))
             {
+                uIManager.shopSystem = this;
                 uIManager.InteractPassive();
                 WaitStart();
                 shopPanel.alpha = 1;
