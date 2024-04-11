@@ -149,11 +149,11 @@ public class Inventory : MonoBehaviour
         var level = mySlot.level;
         var durability = mySlot.durability;
 
-        if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && mySlot.items == null)
+        if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && mySlot.items == null && (changeSlot.weapons != null || changeSlot.armour != null))
         {
             equipItem.Unequip();
         }
-        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem1) && changeSlot.items == null)
+        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem1) && changeSlot.items == null && (mySlot.weapons != null || mySlot.armour != null))
         {
             equipItem1.Unequip();
         }
@@ -200,7 +200,7 @@ public class Inventory : MonoBehaviour
         {
             equip.Equip();
         }
-        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip1) && changeSlot.items == null)
+        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip1) && changeSlot.items == null && (mySlot.weapons != null || mySlot.armour != null))
         {
             equip1.Equip();
         }
