@@ -9,16 +9,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] CanvasGroup interact, notification;
     [SerializeField] TextMeshProUGUI message, coinText;
     [SerializeField] Button refresh;
-    [SerializeField] int coin, refreshCost;
+    [SerializeField] int refreshCost;
+    public int coin;
     public ShopSystem shopSystem;
     void Start()
     {
-        coinText.text = coin.ToString();
+        CoinUpdate();
         refresh.onClick.AddListener(Refresh);
     }
     void Update()
     {
         
+    }
+    public void CoinUpdate()
+    {
+        coinText.text = coin.ToString();
     }
     void Refresh()
     {

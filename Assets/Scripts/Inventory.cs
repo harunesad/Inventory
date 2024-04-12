@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                if (slots[i].items == null && slots[i].weapons == null && slots[i].armour == null)
+                if (!slots[i].items && !slots[i].weapons && !slots[i].armour)
                 {
                     SlotUpdate(slots[i], quantity, itemImage, rarityType);
                     slots[i].items = items;
@@ -81,11 +81,11 @@ public class Inventory : MonoBehaviour
     }
     public void ArmourSlotUpdate(InventorySlot slot, int quantity, Sprite itemImage, RarityType.rarityType rarityType, int level, float durability, Armours armours)
     {
-        if (slot == null)
+        if (!slot)
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                if (slots[i].items == null && slots[i].weapons == null && slots[i].armour == null)
+                if (!slots[i].items && !slots[i].weapons && !slots[i].armour)
                 {
                     SlotUpdate(slots[i], quantity, itemImage, rarityType);
                     slots[i].armour = armours;
@@ -109,7 +109,7 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                if (slots[i].items == null && slots[i].weapons == null && slots[i].armour == null)
+                if (!slots[i].items && !slots[i].weapons && !slots[i].armour)
                 {
                     SlotUpdate(slots[i], quantity, itemImage, rarityType);
                     slots[i].weapons = weapons;
@@ -149,11 +149,11 @@ public class Inventory : MonoBehaviour
         var level = mySlot.level;
         var durability = mySlot.durability;
 
-        if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && mySlot.items == null && (changeSlot.weapons != null || changeSlot.armour != null))
+        if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && mySlot.items == null && (changeSlot.weapons || changeSlot.armour))
         {
             equipItem.Unequip();
         }
-        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem1) && changeSlot.items == null && (mySlot.weapons != null || mySlot.armour != null))
+        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem1) && changeSlot.items == null && (mySlot.weapons || mySlot.armour))
         {
             equipItem1.Unequip();
         }
@@ -176,7 +176,7 @@ public class Inventory : MonoBehaviour
         changeSlot.level = level;
         changeSlot.durability = durability;
 
-        if (mySlot.items != null && changeSlot.items != null && changeSlot.items == mySlot.items)
+        if (mySlot.items && changeSlot.items && changeSlot.items == mySlot.items && mySlot != changeSlot)
         {
             int newQuantity = int.Parse(changeSlot.quantityText.text) + int.Parse(quantity);
             changeSlot.quantityText.text = newQuantity > changeSlot.items.maxStock ? changeSlot.items.maxStock.ToString() : newQuantity.ToString();
@@ -196,11 +196,11 @@ public class Inventory : MonoBehaviour
             changeSlot.quantityText.text = quantity;
         }
 
-        if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && mySlot.items == null)
+        if (changeSlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && !mySlot.items)
         {
             equip.Equip();
         }
-        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip1) && changeSlot.items == null && (mySlot.weapons != null || mySlot.armour != null))
+        else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip1) && !changeSlot.items && (mySlot.weapons || mySlot.armour))
         {
             equip1.Equip();
         }

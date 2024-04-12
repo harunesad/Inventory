@@ -10,8 +10,8 @@ public class ItemCollect : MonoBehaviour
     UIManager uIManager;
     void Start()
     {
-        inventory = FindObjectOfType<InventoryManager>().mainInventory;
-        uIManager = FindObjectOfType<UIManager>();
+        inventory = Reference.Instance.inventoryManager.mainInventory;
+        uIManager = Reference.Instance.uIManager;
     }
 
     // Update is called once per frame

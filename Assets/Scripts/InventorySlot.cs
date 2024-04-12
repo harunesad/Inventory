@@ -27,7 +27,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         rect = GetComponent<RectTransform>();
         drag = GetComponentInChildren<Drag>();
-        inventoryManager = FindObjectOfType<InventoryManager>();
+        inventoryManager = Reference.Instance.inventoryManager;
         inventory = GetComponentInParent<Inventory>();
     }
     private void Start()
@@ -42,19 +42,19 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (!inventory.TryGetComponent<CanvasGroup>(out CanvasGroup canvasGroup) || inventory.GetComponent<CanvasGroup>().alpha == 1)
         {
             inventoryManager.selection.GetComponent<RectTransform>().position = rect.position;
-            if (armour != null && !drag.drag)
+            if (armour && !drag.drag)
             {
                 armourDetails.gameObject.SetActive(true);
                 armourDetails.DetailsUpdate(armour.armourName, armour.description, quantityText.text, durability / 100, armour.levelData[level].sellPrice,
                     armour.levelData[level].buyPrice, armour.levelData[level].armour, armour.levelData[level].addHealth, rarityImage, itemImage);
             }
-            else if (weapons != null && !drag.drag)
+            else if (weapons && !drag.drag)
             {
                 weaponDetails.gameObject.SetActive(true);
                 weaponDetails.DetailsUpdate(weapons.weaponName, weapons.description, quantityText.text, durability / 100, weapons.levelData[level].sellPrice,
                     weapons.levelData[level].buyPrice, weapons.levelData[level].attack, weapons.levelData[level].attackSpeed, rarityImage, itemImage);
             }
-            else if (items != null && !drag.drag)
+            else if (items && !drag.drag)
             {
                 itemDetails.gameObject.SetActive(true);
                 itemDetails.DetailsUpdate(items.itemName, items.description, quantityText.text, items.maxStock, items.sellPrice, items.buyPrice, rarityImage, itemImage);
@@ -71,7 +71,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     void SlotSelect()
     {
         bool active = !inventory.TryGetComponent<CanvasGroup>(out CanvasGroup canvasGroup) || inventory.GetComponent<CanvasGroup>().alpha == 1;
-        if ((items != null || weapons != null || armour != null) && active)
+        if ((items || weapons || armour) && active)
         {
             inventoryManager.selectSlot = this;
             inventoryManager.select.GetComponent<RectTransform>().position = rect.position;
@@ -79,12 +79,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     public void DoubleClick()
     {
-        if (items != null)
+        if (items)
         {
             useClickCount++;
             equipClickCount = 0;
         }
-        else if (weapons != null || armour != null)
+        else if (weapons || armour)
         {
             equipClickCount++;
             useClickCount = 0;

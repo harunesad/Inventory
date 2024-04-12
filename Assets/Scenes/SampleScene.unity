@@ -446,6 +446,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdbb3fdb06e34445a7905d1a323375f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &60416590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60416591}
+  - component: {fileID: 60416592}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &60416591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60416590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 547900816}
+  - {fileID: 156382913}
+  - {fileID: 1674117775}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60416592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60416590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211fb57bc7d94ab4480753aea0042e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIManager: {fileID: 547900817}
+  inventoryManager: {fileID: 1674117776}
 --- !u!1 &60885908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,12 +1881,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156382909}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: -7.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 60416591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &156382914
 Rigidbody:
@@ -6321,7 +6370,7 @@ RectTransform:
   - {fileID: 246202721}
   - {fileID: 1876965585}
   - {fileID: 1953117408}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 60416591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6345,8 +6394,8 @@ MonoBehaviour:
   message: {fileID: 579284625}
   coinText: {fileID: 1942114521}
   refresh: {fileID: 1375062747}
-  coin: 100
   refreshCost: 10
+  coin: 100
   shopSystem: {fileID: 0}
 --- !u!1 &562462607
 GameObject:
@@ -16331,12 +16380,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674117774}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 960, y: 540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 60416591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1674117776
 MonoBehaviour:
@@ -16378,7 +16427,7 @@ MonoBehaviour:
     armours: {fileID: 11400000, guid: 8e81e7651f82fa0449fc5f6b0111b8af, type: 2}
     index: 5
     equip: 1
-    durability: 0
+    durability: 100
     level: 0
     quantity: 0
   - items: {fileID: 0}
@@ -16386,7 +16435,7 @@ MonoBehaviour:
     armours: {fileID: 0}
     index: 2
     equip: 1
-    durability: 0
+    durability: 100
     level: 0
     quantity: 0
   - items: {fileID: 0}
@@ -16394,7 +16443,7 @@ MonoBehaviour:
     armours: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
     index: 1
     equip: 0
-    durability: 0
+    durability: 100
     level: 0
     quantity: 0
   - items: {fileID: 0}
@@ -16402,7 +16451,7 @@ MonoBehaviour:
     armours: {fileID: 0}
     index: 6
     equip: 0
-    durability: 0
+    durability: 100
     level: 0
     quantity: 0
 --- !u!1 &1706962724
@@ -20459,9 +20508,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1876965588}
     - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
       propertyPath: inventoryStart.Array.size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[0].items
+      value: 
+      objectReference: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[5].items
+      value: 
+      objectReference: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[9].items
+      value: 
+      objectReference: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[1].weapons
+      value: 
+      objectReference: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[2].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e81e7651f82fa0449fc5f6b0111b8af, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[3].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[4].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[6].weapons
+      value: 
+      objectReference: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[7].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e81e7651f82fa0449fc5f6b0111b8af, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[8].weapons
+      value: 
+      objectReference: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
     - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
       propertyPath: inventoryStart.Array.data[0].items
       value: 
@@ -20474,6 +20567,18 @@ PrefabInstance:
       propertyPath: inventoryStart.Array.data[9].items
       value: 
       objectReference: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[0].quantity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[5].quantity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[9].quantity
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
       propertyPath: inventoryStart.Array.data[1].weapons
       value: 
@@ -20517,6 +20622,34 @@ PrefabInstance:
     - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
       propertyPath: inventoryStart.Array.data[9].armours
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[1].durability
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[2].durability
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[3].durability
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[4].durability
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[6].durability
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[7].durability
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
+      propertyPath: randomStart.Array.data[8].durability
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8136107852209424312, guid: 677a11259e4cf7e4ca800d6f742acd08, type: 3}
       propertyPath: inventoryStart.Array.data[0].quantity
@@ -20841,10 +20974,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 547900816}
   - {fileID: 1834075155}
-  - {fileID: 1674117775}
-  - {fileID: 156382913}
   - {fileID: 1569394682}
   - {fileID: 3064346949090354096}
   - {fileID: 666333584}
@@ -20852,3 +20982,4 @@ SceneRoots:
   - {fileID: 6807093871954208904}
   - {fileID: 6628618532495033941}
   - {fileID: 185930742242421627}
+  - {fileID: 60416591}

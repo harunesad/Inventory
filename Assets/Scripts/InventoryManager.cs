@@ -26,12 +26,12 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < inventoryStart.Count; i++)
         {
             InventorySlot mySlot = mainInventory.slots[inventoryStart[i].index];
-            if (inventoryStart[i].items != null)
+            if (inventoryStart[i].items)
             {
                 mainInventory.ItemSlotUpdate(mySlot, inventoryStart[i].quantity, inventoryStart[i].items.itemImage, inventoryStart[i].items.rarityType,
                     inventoryStart[i].items);
             }
-            else if (inventoryStart[i].weapons != null)
+            else if (inventoryStart[i].weapons)
             {
                 mainInventory.WeaponSlotUpdate(mySlot, 1, inventoryStart[i].weapons.weaponImage, inventoryStart[i].weapons.rarityType, inventoryStart[i].level
                     , inventoryStart[i].durability, inventoryStart[i].weapons);
@@ -40,7 +40,7 @@ public class InventoryManager : MonoBehaviour
                     mainInventory.SwitchSlot(mySlot, weapon);
                 }
             }
-            else if (inventoryStart[i].armours != null)
+            else if (inventoryStart[i].armours)
             {
                 mainInventory.ArmourSlotUpdate(mySlot, 1, inventoryStart[i].armours.armourImage, inventoryStart[i].armours.rarityType, inventoryStart[i].level,
                     inventoryStart[i].durability, inventoryStart[i].armours);
