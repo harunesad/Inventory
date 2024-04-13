@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] CanvasGroup ýnventoryPanel, shopPanel;
-    public Inventory mainInventory;
+    public CanvasGroup inventoryPanel;
+    public CanvasGroup shopPanel, chestPanel;
+    public Inventory mainInventory, chestInventory, shopInventory;
     public UseItem use;
     public CanvasGroup interact;
     public InventorySlot headArmour, armArmour, bodyArmour, legArmour, shield, weapon;
@@ -77,8 +78,9 @@ public class InventoryManager : MonoBehaviour
         {
             select.GetComponent<RectTransform>().position = selectPos;
             selection.GetComponent<RectTransform>().position = selectionPos;
-            ýnventoryPanel.alpha = (ýnventoryPanel.alpha == 0) ? 1 : 0;
             shopPanel.alpha = 0;
+            chestPanel.alpha = 0;
+            inventoryPanel.alpha = (inventoryPanel.alpha == 0) ? 1 : 0;
         }
     }
 }

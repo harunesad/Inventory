@@ -100,7 +100,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (useClickCount == 2)
         {
-            FindObjectOfType<InventoryManager>().use.Use(this);
+            inventoryManager.use.Use(this);
             quantityText.text = (int.Parse(quantityText.text) - 1).ToString();
             if (int.Parse(quantityText.text) == 0)
             {

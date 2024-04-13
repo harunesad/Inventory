@@ -84,11 +84,10 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 {
                     quantity = int.Parse(mySlot.quantityText.text) + int.Parse(slot.quantityText.text) - slot.items.maxStock;
                 }
-                else
-                {
-                    quantity = int.Parse(mySlot.quantityText.text);
-                }
-                quantity = quantity <= 0 ? int.Parse(mySlot.quantityText.text) : quantity;
+
+                Debug.Log(quantity);
+                quantity = quantity <= 0 ? int.Parse(mySlot.quantityText.text) : int.Parse(mySlot.quantityText.text) - quantity;
+                Debug.Log(quantity);
                 int buySell = (inventory.shop ? 1 * mySlot.items.buyPrice : -1 * mySlot.items.sellPrice) * quantity;
                 buyItem = buySell;
             }
@@ -102,25 +101,25 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 int buySell = inventory.shop ? 1 * mySlot.armour.levelData[mySlot.level].buyPrice : -1 * mySlot.armour.levelData[mySlot.level].sellPrice;
                 buyArmour = buySell;
             }
-            //if (slot.items)
-            //{
-            //    //int quantity = 0;
-            //    //if (slot.items == mySlot.items)
-            //    //{
-            //    //    quantity = int.Parse(mySlot.quantityText.text) + int.Parse(slot.quantityText.text) - slot.items.maxStock;
-            //    //}
-            //    //else
-            //    //{
-            //    //    quantity = int.Parse(slot.quantityText.text);
-            //    //}
-            //    //quantity = quantity <= 0 ? int.Parse(mySlot.quantityText.text) : quantity;
-            //    //int buySell = (inventory.shop ? 1 * mySlot.items.buyPrice : -1 * mySlot.items.sellPrice) * quantity;
-            //    //buyItem = buySell;
-            //    sellItem = slot.items.sellPrice;
-            //    int buySell = inventory.shop ? -1 : 1;
-            //    sellItem *= buySell;
-            //}
-            if (slot.weapons)
+            if (slot.items && !mySlot.items)
+            {
+                int quantity = 0;
+                //if (slot.items == mySlot.items)
+                //{
+                //    quantity = int.Parse(mySlot.quantityText.text) + int.Parse(slot.quantityText.text) - slot.items.maxStock;
+                //}
+                //else
+                //{
+                //    quantity = int.Parse(slot.quantityText.text);
+                //}
+                quantity = int.Parse(slot.quantityText.text);
+                int buySell = (inventory.shop ? -1 * slot.items.sellPrice : 1 * slot.items.buyPrice) * quantity;
+                sellItem = buySell;
+                //sellItem = slot.items.sellPrice;
+                //int buySell = inventory.shop ? -1 : 1;
+                //sellItem *= buySell;
+            }
+            else if (slot.weapons)
             {
                 int buySell = inventory.shop ? -1 * slot.weapons.levelData[mySlot.level].sellPrice : 1 * slot.weapons.levelData[mySlot.level].buyPrice;
                 sellWeapon = buySell;
