@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] int refreshCost;
     public int coin;
     public ShopSystem shopSystem;
+    public ChestSystem chestSystem;
     void Start()
     {
         CoinUpdate();

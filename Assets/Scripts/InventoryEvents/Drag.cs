@@ -85,9 +85,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     quantity = int.Parse(mySlot.quantityText.text) + int.Parse(slot.quantityText.text) - slot.items.maxStock;
                 }
 
-                Debug.Log(quantity);
                 quantity = quantity <= 0 ? int.Parse(mySlot.quantityText.text) : int.Parse(mySlot.quantityText.text) - quantity;
-                Debug.Log(quantity);
                 int buySell = (inventory.shop ? 1 * mySlot.items.buyPrice : -1 * mySlot.items.sellPrice) * quantity;
                 buyItem = buySell;
             }
@@ -104,20 +102,9 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             if (slot.items && !mySlot.items)
             {
                 int quantity = 0;
-                //if (slot.items == mySlot.items)
-                //{
-                //    quantity = int.Parse(mySlot.quantityText.text) + int.Parse(slot.quantityText.text) - slot.items.maxStock;
-                //}
-                //else
-                //{
-                //    quantity = int.Parse(slot.quantityText.text);
-                //}
                 quantity = int.Parse(slot.quantityText.text);
                 int buySell = (inventory.shop ? -1 * slot.items.sellPrice : 1 * slot.items.buyPrice) * quantity;
                 sellItem = buySell;
-                //sellItem = slot.items.sellPrice;
-                //int buySell = inventory.shop ? -1 : 1;
-                //sellItem *= buySell;
             }
             else if (slot.weapons)
             {
@@ -169,6 +156,14 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             else
             {
                 inventory.SwitchSlot(mySlot, slot);
+            }
+            if (Reference.Instance.inventoryManager.chestPanel.alpha == 1)
+            {
+                Reference.Instance.uIManager.chestSystem.ChestItemsUpdate();
+            }
+            else if (Reference.Instance.inventoryManager.shopPanel.alpha == 1)
+            {
+                Reference.Instance.uIManager.shopSystem.ShopItemsUpdate();
             }
             //if (slot.items == null && slot.weapons == null && slot.armour == null)
             //{
@@ -247,10 +242,6 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             //    }
             //}
         }
-        //else if (slot && slot.GetComponentInParent<Inventory>().shop)
-        //{
-
-        //}
         else if (drop && !mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && inventory.isMine)
         {
             Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position + (Vector3.forward * 3);

@@ -35,7 +35,7 @@ public class ChestSystem : MonoBehaviour
             }
         }
     }
-    public void ShopItemsUpdate()
+    public void ChestItemsUpdate()
     {
         for (int i = 0; i < mainInventory.slots.Count; i++)
         {
@@ -85,10 +85,11 @@ public class ChestSystem : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 uIManager.InteractPassive();
-                if (uIManager.shopSystem != this)
+                if (uIManager.chestSystem != this)
                 {
                     WaitStart();
                 }
+                uIManager.chestSystem = this;
                 Reference.Instance.inventoryManager.shopPanel.alpha = 0;
                 Reference.Instance.inventoryManager.chestPanel.alpha = 1;
                 Reference.Instance.inventoryManager.shopPanel.blocksRaycasts = false;

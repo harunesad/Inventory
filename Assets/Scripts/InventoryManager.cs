@@ -71,6 +71,40 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+    public void InventoryItemsUpdate()
+    {
+        for (int i = 0; i < mainInventory.slots.Count; i++)
+        {
+            if (mainInventory.slots[i].weapons || mainInventory.slots[i].armour)
+            {
+                inventoryStart[i].weapons = mainInventory.slots[i].weapons ? mainInventory.slots[i].weapons : null;
+                inventoryStart[i].armours = mainInventory.slots[i].armour ? mainInventory.slots[i].armour : null;
+                inventoryStart[i].durability = mainInventory.slots[i].durability;
+                inventoryStart[i].level = mainInventory.slots[i].level;
+                inventoryStart[i].items = null;
+            }
+            else if (mainInventory.slots[i].items)
+            {
+                inventoryStart[i].items = mainInventory.slots[i].items;
+                inventoryStart[i].quantity = int.Parse(mainInventory.slots[i].quantityText.text);
+                inventoryStart[i].weapons = null;
+                inventoryStart[i].armours = null;
+            }
+            else
+            {
+                inventoryStart[i].weapons = null;
+                inventoryStart[i].armours = null;
+                inventoryStart[i].items = null;
+            }
+        }
+        for (int i = mainInventory.slots.Count; i < inventoryStart.Count; i++)
+        {
+            inventoryStart[i].weapons = null;
+            inventoryStart[i].armours = null;
+            inventoryStart[i].items = null;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -82,6 +116,7 @@ public class InventoryManager : MonoBehaviour
             chestPanel.alpha = 0;
             inventoryPanel.alpha = (inventoryPanel.alpha == 0) ? 1 : 0;
         }
+        Application.quitting += InventoryItemsUpdate;
     }
 }
 [System.Serializable]

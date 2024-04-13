@@ -1662,10 +1662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a2e1997d937f47ae06f43ecd03b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
-  rarityImage: {fileID: 0}
-  quantityText: {fileID: 0}
-  equippedText: {fileID: 0}
+  itemImage: {fileID: 1767054749}
+  rarityImage: {fileID: 1641437912}
+  quantityText: {fileID: 1329017217}
+  equippedText: {fileID: 1711179638}
   durability: 0
   level: 0
   armour: {fileID: 0}
@@ -2903,10 +2903,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a2e1997d937f47ae06f43ecd03b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
-  rarityImage: {fileID: 0}
-  quantityText: {fileID: 0}
-  equippedText: {fileID: 0}
+  itemImage: {fileID: 2002209899}
+  rarityImage: {fileID: 1517585008}
+  quantityText: {fileID: 1815354992}
+  equippedText: {fileID: 496031485}
   durability: 0
   level: 0
   armour: {fileID: 0}
@@ -8137,6 +8137,7 @@ MonoBehaviour:
   refreshCost: 10
   coin: 1000
   shopSystem: {fileID: 0}
+  chestSystem: {fileID: 0}
 --- !u!1 &562462607
 GameObject:
   m_ObjectHideFlags: 0
@@ -9422,10 +9423,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a2e1997d937f47ae06f43ecd03b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
-  rarityImage: {fileID: 0}
-  quantityText: {fileID: 0}
-  equippedText: {fileID: 0}
+  itemImage: {fileID: 877798000}
+  rarityImage: {fileID: 250762912}
+  quantityText: {fileID: 210937204}
+  equippedText: {fileID: 893448678}
   durability: 0
   level: 0
   armour: {fileID: 0}
@@ -10243,10 +10244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a2e1997d937f47ae06f43ecd03b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
-  rarityImage: {fileID: 0}
-  quantityText: {fileID: 0}
-  equippedText: {fileID: 0}
+  itemImage: {fileID: 1434669268}
+  rarityImage: {fileID: 1340908031}
+  quantityText: {fileID: 379461166}
+  equippedText: {fileID: 1727833554}
   durability: 0
   level: 0
   armour: {fileID: 0}
@@ -16202,10 +16203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a2e1997d937f47ae06f43ecd03b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
-  rarityImage: {fileID: 0}
-  quantityText: {fileID: 0}
-  equippedText: {fileID: 0}
+  itemImage: {fileID: 1511232271}
+  rarityImage: {fileID: 32696360}
+  quantityText: {fileID: 470885645}
+  equippedText: {fileID: 4965692}
   durability: 0
   level: 0
   armour: {fileID: 0}
@@ -17214,10 +17215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a2e1997d937f47ae06f43ecd03b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
-  rarityImage: {fileID: 0}
-  quantityText: {fileID: 0}
-  equippedText: {fileID: 0}
+  itemImage: {fileID: 1092042301}
+  rarityImage: {fileID: 23531929}
+  quantityText: {fileID: 617955652}
+  equippedText: {fileID: 2005312912}
   durability: 0
   level: 0
   armour: {fileID: 0}
@@ -17759,10 +17760,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a2e1997d937f47ae06f43ecd03b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
-  rarityImage: {fileID: 0}
-  quantityText: {fileID: 0}
-  equippedText: {fileID: 0}
+  itemImage: {fileID: 823578666}
+  rarityImage: {fileID: 1831678372}
+  quantityText: {fileID: 436917115}
+  equippedText: {fileID: 204454148}
   durability: 0
   level: 0
   armour: {fileID: 0}
@@ -18248,10 +18249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a2e1997d937f47ae06f43ecd03b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
-  rarityImage: {fileID: 0}
-  quantityText: {fileID: 0}
-  equippedText: {fileID: 0}
+  itemImage: {fileID: 339434326}
+  rarityImage: {fileID: 1944082107}
+  quantityText: {fileID: 1406303634}
+  equippedText: {fileID: 1467410175}
   durability: 0
   level: 0
   armour: {fileID: 0}
@@ -20926,6 +20927,46 @@ MonoBehaviour:
     weapons: {fileID: 0}
     armours: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
     index: 1
+    equip: 0
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    index: 6
+    equip: 0
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    index: 6
+    equip: 0
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    index: 6
+    equip: 0
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    index: 6
+    equip: 0
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    index: 6
     equip: 0
     durability: 100
     level: 0
@@ -26263,6 +26304,90 @@ PrefabInstance:
     - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
       propertyPath: mainInventory
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[0].items
+      value: 
+      objectReference: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[1].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e81e7651f82fa0449fc5f6b0111b8af, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[2].weapons
+      value: 
+      objectReference: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[3].weapons
+      value: 
+      objectReference: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[4].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[5].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[6].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[7].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[8].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[9].armours
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[0].quantity
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[1].durability
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[2].durability
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[3].durability
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[4].durability
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[5].durability
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[6].durability
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[7].durability
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[8].durability
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375761438140633994, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
+      propertyPath: inventoryStart.Array.data[9].durability
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 7808111184988440644, guid: 121db61a35c8c764eba35b285ffb89aa, type: 3}
       propertyPath: m_LocalPosition.x
