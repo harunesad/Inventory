@@ -22,6 +22,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public ArmourDetails armourDetails;
     InventoryManager inventoryManager;
     Inventory inventory;
+    public InventorySlot craftSlot;
     int useClickCount, equipClickCount;
     void Awake()
     {
@@ -32,14 +33,17 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     private void Start()
     {
-        if (drag.TryGetComponent<Button>(out Button button))
+        if (drag)
         {
-            button.onClick.AddListener(SlotSelect);
+            if (drag.TryGetComponent<Button>(out Button button))
+            {
+                button.onClick.AddListener(SlotSelect);
+            }
         }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!inventory.TryGetComponent<CanvasGroup>(out CanvasGroup canvasGroup) || inventory.GetComponent<CanvasGroup>().alpha == 1)
+        if ((!inventory.TryGetComponent<CanvasGroup>(out CanvasGroup canvasGroup) || inventory.GetComponent<CanvasGroup>().alpha == 1) && drag)
         {
             inventoryManager.selection.GetComponent<RectTransform>().position = rect.position;
             if (armour && !drag.drag)

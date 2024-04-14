@@ -27,10 +27,21 @@ public class WeaponCollect : MonoBehaviour
             uIManager.InteractActive("Collect");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                uIManager.NotificationActive(weapons.name + " collect", weapons.weaponImage);
-                uIManager.InteractPassive();
-                inventory.WeaponSlotUpdate(null, 1, weapons.weaponImage, weapons.rarityType, level, durability, weapons);
-                transform.parent.gameObject.SetActive(false);
+                bool collectable = false;
+                for (int i = 0; i < inventory.slots.Count; i++)
+                {
+                    if (!inventory.slots[i].items && !inventory.slots[i].weapons && !inventory.slots[i].armour)
+                    {
+                        collectable = true;
+                    }
+                }
+                if (collectable)
+                {
+                    uIManager.NotificationActive(weapons.name + " collect", weapons.weaponImage);
+                    uIManager.InteractPassive();
+                    inventory.WeaponSlotUpdate(null, 1, weapons.weaponImage, weapons.rarityType, level, durability, weapons);
+                    transform.parent.gameObject.SetActive(false);
+                }
             }
         }
     }

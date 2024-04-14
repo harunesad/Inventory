@@ -52,6 +52,7 @@ public class Inventory : MonoBehaviour
             {
                 if (!slots[i].items && !slots[i].weapons && !slots[i].armour)
                 {
+                    Debug.Log(i);
                     SlotUpdate(slots[i], quantity, itemImage, rarityType);
                     slots[i].items = items;
                     return;

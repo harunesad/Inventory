@@ -5,8 +5,8 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public CanvasGroup inventoryPanel;
-    public CanvasGroup shopPanel, chestPanel;
-    public Inventory mainInventory, chestInventory, shopInventory;
+    public CanvasGroup shopPanel, chestPanel, craftPanel;
+    public Inventory mainInventory, chestInventory, shopInventory, craftInventory;
     public UseItem use;
     public CanvasGroup interact;
     public InventorySlot headArmour, armArmour, bodyArmour, legArmour, shield, weapon;
@@ -110,10 +110,15 @@ public class InventoryManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
+            craftPanel.GetComponentInChildren<CraftControl>().CraftSlotUpdate();
             select.GetComponent<RectTransform>().position = selectPos;
             selection.GetComponent<RectTransform>().position = selectionPos;
+            shopPanel.blocksRaycasts = false;
+            chestPanel.blocksRaycasts = false;
+            craftPanel.blocksRaycasts = false;
             shopPanel.alpha = 0;
             chestPanel.alpha = 0;
+            craftPanel.alpha = 0;
             inventoryPanel.alpha = (inventoryPanel.alpha == 0) ? 1 : 0;
         }
         Application.quitting += InventoryItemsUpdate;

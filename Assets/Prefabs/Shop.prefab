@@ -200,3 +200,127 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc683b4efa641e479837eb06ca6b543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopCount: 3
+  inventoryStart:
+  - items: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    weapons: {fileID: 0}
+    armours: {fileID: 0}
+    durability: 0
+    level: 0
+    quantity: 4
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 8e81e7651f82fa0449fc5f6b0111b8af, type: 2}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    weapons: {fileID: 0}
+    armours: {fileID: 0}
+    durability: 0
+    level: 0
+    quantity: 2
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 8e81e7651f82fa0449fc5f6b0111b8af, type: 2}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    weapons: {fileID: 0}
+    armours: {fileID: 0}
+    durability: 0
+    level: 0
+    quantity: 12
+  newRandomStart: []
+  randomStart:
+  - items: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    weapons: {fileID: 0}
+    armours: {fileID: 0}
+    durability: 0
+    level: 0
+    quantity: 4
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 8e81e7651f82fa0449fc5f6b0111b8af, type: 2}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 6a6ccf91f3df3924394f74de43b188c5, type: 2}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    weapons: {fileID: 0}
+    armours: {fileID: 0}
+    durability: 0
+    level: 0
+    quantity: 2
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 0}
+    armours: {fileID: 11400000, guid: 8e81e7651f82fa0449fc5f6b0111b8af, type: 2}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 0}
+    weapons: {fileID: 11400000, guid: 04ce84b519db25f469bd23301ea6a45b, type: 2}
+    armours: {fileID: 0}
+    durability: 100
+    level: 0
+    quantity: 0
+  - items: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    weapons: {fileID: 0}
+    armours: {fileID: 0}
+    durability: 0
+    level: 0
+    quantity: 12

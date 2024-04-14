@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public int coin;
     public ShopSystem shopSystem;
     public ChestSystem chestSystem;
+    public CraftControl craftControl;
     void Start()
     {
         CoinUpdate();

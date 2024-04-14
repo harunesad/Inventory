@@ -125,7 +125,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 Reference.Instance.uIManager.shopSystem.ShopItemsUpdate();
             }
         }
-        else if (isSlot)
+        else if (isSlot && slot.GetComponentInChildren<Drag>())
         {
             if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem))
             {
@@ -165,82 +165,10 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 Reference.Instance.uIManager.shopSystem.ShopItemsUpdate();
             }
-            //if (slot.items == null && slot.weapons == null && slot.armour == null)
-            //{
-            //    if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && inventory.isMine)
-            //    {
-            //        if (mySlot.weapons != null && mySlot.weapons.type == equipItem.type)
-            //        {
-            //            inventory.WeaponSlotUpdate(slot, 1, mySlot.weapons.weaponImage, mySlot.weapons.rarityType, mySlot.level, mySlot.durability, mySlot.weapons);
-            //            inventory.SlotReset(mySlot);
-            //            equipItem.Equip();
-            //        }
-            //        else if (mySlot.armour != null && mySlot.armour.type == equipItem.type)
-            //        {
-            //            inventory.ArmourSlotUpdate(slot, 1, mySlot.armour.armourImage, mySlot.armour.rarityType, mySlot.level, mySlot.durability, mySlot.armour);
-            //            inventory.SlotReset(mySlot);
-            //            equipItem.Equip();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip))
-            //        {
-            //            equip.Unequip();
-            //        }
-            //        if (slot.GetComponentInParent<Inventory>().shop || mySlot.GetComponentInParent<Inventory>().shop)
-            //        {
-
-            //        }
-            //        else
-            //        {
-            //            if (mySlot.items != null)
-            //            {
-            //                inventory.ItemSlotUpdate(slot, int.Parse(mySlot.quantityText.text), mySlot.items.itemImage, mySlot.items.rarityType, mySlot.items);
-            //                inventory.SlotReset(mySlot);
-            //            }
-            //            else if (mySlot.weapons != null)
-            //            {
-            //                inventory.WeaponSlotUpdate(slot, 1, mySlot.weapons.weaponImage, mySlot.weapons.rarityType, mySlot.level, mySlot.durability, mySlot.weapons);
-            //                inventory.SlotReset(mySlot);
-            //            }
-            //            else if (mySlot.armour != null)
-            //            {
-            //                inventory.ArmourSlotUpdate(slot, 1, mySlot.armour.armourImage, mySlot.armour.rarityType, mySlot.level, mySlot.durability, mySlot.armour);
-            //                inventory.SlotReset(mySlot);
-            //            }
-            //        }
-            //    }
-            //}
-            //else if (inventory.isMine && !slot.GetComponentInParent<Inventory>().shop && !mySlot.GetComponentInParent<Inventory>().shop)
-            //{
-            //    if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem) && mySlot.items == null)
-            //    {
-            //        if (mySlot.weapons != null && mySlot.weapons.type == equipItem.type)
-            //        {
-            //            inventory.SwitchSlot(mySlot, slot);
-            //        }
-            //        else if (mySlot.armour != null && mySlot.armour.type == equipItem.type)
-            //        {
-            //            inventory.SwitchSlot(mySlot, slot);
-            //        }
-            //    }
-            //    else if (mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && slot.items == null)
-            //    {
-            //        if (slot.weapons != null && slot.weapons.type == equip.type)
-            //        {
-            //            inventory.SwitchSlot(mySlot, slot);
-            //        }
-            //        else if (slot.armour != null && slot.armour.type == equip.type)
-            //        {
-            //            inventory.SwitchSlot(mySlot, slot);
-            //        }
-            //    }
-            //    else if (mySlot != slot)
-            //    {
-            //        inventory.SwitchSlot(mySlot, slot);
-            //    }
-            //}
+            else if (Reference.Instance.inventoryManager.craftPanel.alpha == 1)
+            {
+                Reference.Instance.uIManager.craftControl.Craftable();
+            }
         }
         else if (drop && !mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip) && inventory.isMine)
         {
