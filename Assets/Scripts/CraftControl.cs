@@ -55,6 +55,16 @@ public class CraftControl : MonoBehaviour
                 }
             }
         }
+        for (int i = 0; i < firsSlot.Count; i++)
+        {
+            if (secondSlot[i].items == firstCraftSlot.items && int.Parse(firstCraftSlot.quantityText.text) >= secondSlot[i].quantity)
+            {
+                if (firsSlot[i].items == secondCraftSlot.items && int.Parse(secondCraftSlot.quantityText.text) >= firsSlot[i].quantity)
+                {
+                    craft = true;
+                }
+            }
+        }
         if (craft)
         {
             if (resultSlot[index].items)

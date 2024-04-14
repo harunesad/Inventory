@@ -22,7 +22,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public ArmourDetails armourDetails;
     InventoryManager inventoryManager;
     Inventory inventory;
-    public InventorySlot craftSlot;
     int useClickCount, equipClickCount;
     void Awake()
     {
