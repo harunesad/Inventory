@@ -43,7 +43,6 @@ public class ShopSystem : MonoBehaviour
         {
             InventorySlot mySlot = mainInventory.slots[i];
             int random = Random.Range(0, randomStart.Count);
-            Debug.Log(random);
             if (randomStart[random].items)
             {
                 mainInventory.ItemSlotUpdate(mySlot, randomStart[random].quantity, randomStart[random].items.itemImage, randomStart[random].items.rarityType,

@@ -125,8 +125,9 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 Reference.Instance.uIManager.shopSystem.ShopItemsUpdate();
             }
         }
-        else if (isSlot && slot.GetComponentInChildren<Drag>())
+        else if (isSlot && slot.GetComponentInChildren<Drag>() && !inventory.shop && !slot.GetComponentInParent<Inventory>().shop)
         {
+            Debug.Log("aaa");
             if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem))
             {
                 if (mySlot.weapons && mySlot.weapons.type == equipItem.type)
@@ -161,10 +162,10 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 Reference.Instance.uIManager.chestSystem.ChestItemsUpdate();
             }
-            else if (Reference.Instance.inventoryManager.shopPanel.alpha == 1)
-            {
-                Reference.Instance.uIManager.shopSystem.ShopItemsUpdate();
-            }
+            //else if (Reference.Instance.inventoryManager.shopPanel.alpha == 1)
+            //{
+            //    Reference.Instance.uIManager.shopSystem.ShopItemsUpdate();
+            //}
             else if (Reference.Instance.inventoryManager.craftPanel.alpha == 1)
             {
                 Reference.Instance.uIManager.craftControl.Craftable();

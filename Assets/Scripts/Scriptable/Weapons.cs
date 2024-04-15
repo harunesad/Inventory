@@ -29,4 +29,5 @@ public class WeaponLevels
     public int buyPrice;
     public float attack;
     public float attackSpeed;
+    public float range;
 }
