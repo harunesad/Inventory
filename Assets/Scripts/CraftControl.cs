@@ -51,6 +51,7 @@ public class CraftControl : MonoBehaviour
             {
                 if (secondSlot[i].items == secondCraftSlot.items && int.Parse(secondCraftSlot.quantityText.text) >= secondSlot[i].quantity)
                 {
+                    index = i;
                     craft = true;
                 }
             }
@@ -61,6 +62,7 @@ public class CraftControl : MonoBehaviour
             {
                 if (firsSlot[i].items == secondCraftSlot.items && int.Parse(secondCraftSlot.quantityText.text) >= firsSlot[i].quantity)
                 {
+                    index = i;
                     craft = true;
                 }
             }

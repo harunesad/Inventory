@@ -320,7 +320,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &15077679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,7 +927,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &52107803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,7 +1527,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &89762178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2123,7 +2120,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &113823500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,7 +2274,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &119507796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4171,7 +4166,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &222499311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8719,7 +8713,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &414462563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9008,7 +9001,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &423821969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9244,7 +9236,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &436501084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9917,7 +9908,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &450846302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10437,7 +10427,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &483138890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12568,7 +12557,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &604212318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13163,7 +13151,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &623891110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13475,7 +13462,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &660199227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13726,7 +13712,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &682796985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14222,7 +14207,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &708069155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14534,7 +14518,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &718284935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16247,7 +16230,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &806759048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16592,7 +16574,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &823681827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17338,7 +17319,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &869647859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17528,7 +17508,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &881964349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17764,7 +17743,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &903916680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18755,7 +18733,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &956836211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19426,7 +19403,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &997656608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20363,7 +20339,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1044440452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21889,7 +21864,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1109371877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22755,7 +22729,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1147403713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23921,7 +23894,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1226354987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24173,7 +24145,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1247989947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24350,7 +24321,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1258601344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25288,7 +25258,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1306454149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25390,7 +25359,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1323049070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25626,7 +25594,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1328189555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26073,7 +26040,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1357314908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26563,7 +26529,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1381442183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26933,7 +26898,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1405081126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28098,7 +28062,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1467207452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28580,7 +28543,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1481458979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29116,7 +29078,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1526819928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29958,7 +29919,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1565089865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31643,30 +31603,30 @@ MonoBehaviour:
     durability: 0
     level: 0
     quantity: 8
-  - items: {fileID: 11400000, guid: 7411076f50078b94c92756ae890cb083, type: 2}
+  - items: {fileID: 0}
     weapons: {fileID: 0}
     armours: {fileID: 0}
     index: 7
     equip: 0
     durability: 0
     level: 0
-    quantity: 15
-  - items: {fileID: 11400000, guid: 79469c5c89b8cbc4cacdf5185aa24d93, type: 2}
+    quantity: 0
+  - items: {fileID: 0}
     weapons: {fileID: 0}
     armours: {fileID: 0}
     index: 2
     equip: 0
     durability: 0
     level: 0
-    quantity: 8
-  - items: {fileID: 11400000, guid: a57787d97b452bb41b090cd5ffc9ce16, type: 2}
+    quantity: 0
+  - items: {fileID: 0}
     weapons: {fileID: 0}
     armours: {fileID: 0}
     index: 3
     equip: 0
     durability: 0
     level: 0
-    quantity: 4
+    quantity: 0
   - items: {fileID: 11400000, guid: 7411076f50078b94c92756ae890cb083, type: 2}
     weapons: {fileID: 0}
     armours: {fileID: 0}
@@ -31963,7 +31923,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1703180664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32200,7 +32159,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1707168522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32792,7 +32750,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1734740981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33475,7 +33432,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1785932714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33845,7 +33801,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1804710493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34717,7 +34672,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1851584984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34894,7 +34848,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1853667889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36269,7 +36222,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1915181791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37497,7 +37449,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &1976981601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38753,7 +38704,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!114 &2057454232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39311,7 +39261,6 @@ MonoBehaviour:
   itemDetails: {fileID: 594250579}
   weaponDetails: {fileID: 1550748148}
   armourDetails: {fileID: 2103161724}
-  craftSlot: {fileID: 0}
 --- !u!1 &2091456755
 GameObject:
   m_ObjectHideFlags: 0

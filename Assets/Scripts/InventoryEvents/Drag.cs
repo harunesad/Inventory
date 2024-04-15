@@ -127,7 +127,6 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else if (isSlot && slot.GetComponentInChildren<Drag>() && !inventory.shop && !slot.GetComponentInParent<Inventory>().shop)
         {
-            Debug.Log("aaa");
             if (slot.gameObject.TryGetComponent<EquipItem>(out EquipItem equipItem))
             {
                 if (mySlot.weapons && mySlot.weapons.type == equipItem.type)
