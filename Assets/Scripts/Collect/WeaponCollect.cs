@@ -37,7 +37,7 @@ public class WeaponCollect : MonoBehaviour
                 }
                 if (collectable)
                 {
-                    uIManager.NotificationActive(weapons.name + " collect", weapons.weaponImage);
+                    uIManager.NotificationActive(weapons.name + " collect", weapons.weaponImage, false, false);
                     uIManager.InteractPassive();
                     inventory.WeaponSlotUpdate(null, 1, weapons.weaponImage, weapons.rarityType, level, durability, weapons);
                     transform.parent.gameObject.SetActive(false);

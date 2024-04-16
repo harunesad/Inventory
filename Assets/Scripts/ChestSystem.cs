@@ -81,7 +81,7 @@ public class ChestSystem : MonoBehaviour
             {
                 uIManager = Reference.Instance.uIManager;
             }
-            uIManager.InteractActive("Speak");
+            uIManager.InteractActive("Open");
             if (Input.GetKeyDown(KeyCode.E))
             {
                 uIManager.InteractPassive();

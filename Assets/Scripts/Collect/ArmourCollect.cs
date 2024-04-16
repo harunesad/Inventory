@@ -37,7 +37,7 @@ public class ArmourCollect : MonoBehaviour
                 }
                 if (collectable)
                 {
-                    uIManager.NotificationActive(armour.name + " collect", armour.armourImage);
+                    uIManager.NotificationActive(armour.name + " collect", armour.armourImage, false, false);
                     uIManager.InteractPassive();
                     inventory.ArmourSlotUpdate(null, 1, armour.armourImage, armour.rarityType, level, durability, armour);
                     transform.parent.gameObject.SetActive(false);

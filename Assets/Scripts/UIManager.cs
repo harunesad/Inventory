@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] CanvasGroup interact, notification;
+    [SerializeField] CanvasGroup interact, notification, taskNotification;
     [SerializeField] TextMeshProUGUI message, coinText;
     [SerializeField] Button refresh;
     [SerializeField] int refreshCost;
     public int coin;
     public ShopSystem shopSystem;
     public ChestSystem chestSystem;
-    public CraftControl craftControl;
     public TaskSystem taskSystem;
+    public CraftControl craftControl;
+    public TaskItems taskItems;
     void Start()
     {
         CoinUpdate();
@@ -37,12 +38,26 @@ public class UIManager : MonoBehaviour
             shopSystem.RandomShopItems();
         }
     }
-    public void NotificationActive(string message, Sprite itemSprite)
+    public void NotificationActive(string message, Sprite itemSprite, bool task, bool taskComplete)
     {
-        notification.GetComponentInChildren<TextMeshProUGUI>().text = message;
-        notification.transform.GetChild(0).GetComponent<Image>().sprite = itemSprite;
-        notification.alpha = 1;
-        StartCoroutine(NotificationPassive());
+        if (!task)
+        {
+            notification.GetComponentInChildren<TextMeshProUGUI>().text = message;
+            notification.transform.GetChild(0).GetComponent<Image>().sprite = itemSprite;
+            notification.alpha = 1;
+            StartCoroutine(NotificationPassive());
+        }
+        else
+        {
+            if (taskComplete)
+            {
+                taskNotification.alpha = 0;
+                return;
+            }
+            taskNotification.GetComponentInChildren<TextMeshProUGUI>().text = message;
+            taskNotification.transform.GetChild(0).GetComponent<Image>().sprite = itemSprite;
+            taskNotification.alpha = 1;
+        }
     }
     IEnumerator NotificationPassive()
     {

@@ -36,7 +36,7 @@ public class ItemCollect : MonoBehaviour
                 }
                 if (collectable)
                 {
-                    uIManager.NotificationActive(items.name + " collect", items.itemImage);
+                    uIManager.NotificationActive(items.name + " collect", items.itemImage, false, false);
                     uIManager.InteractPassive();
                     inventory.ItemSlotUpdate(null, quantity, items.itemImage, items.rarityType, items);
                     transform.parent.gameObject.SetActive(false);

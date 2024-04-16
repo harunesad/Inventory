@@ -10,6 +10,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     InventorySlot slot, mySlot;
     DropItem drop;
     UseItem use;
+    TaskItems taskItems;
     Vector3 startPos;
     bool isSlot;
     Inventory inventory;
@@ -65,6 +66,10 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             else if (result.gameObject.TryGetComponent<UseItem>(out UseItem useItem))
             {
                 use = useItem;
+            }
+            else if (result.gameObject.TryGetComponent<TaskItems>(out TaskItems taskItem))
+            {
+                taskItems = taskItem;
             }
         }
         bool slotState = slot;
@@ -185,11 +190,20 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 inventory.SlotReset(mySlot);
             }
         }
+        else if (taskItems && taskItems.taskInventoryStart.isStarted)
+        {
+            //taskItems.TaskUpdate(mySlot);
+            if (taskItems.TaskUpdate(mySlot))
+            {
+                inventory.SlotReset(mySlot);
+            }
+        }
         transform.parent = mySlot.transform;
         rect.position = startPos;
         isSlot = false;
         drop = null;
         use = null;
+        taskItems = null;
     }
     //Surukleme islemleri olacak 
     // Start is called before the first frame update
