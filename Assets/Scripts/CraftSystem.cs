@@ -33,11 +33,11 @@ public class CraftSystem : MonoBehaviour
                 //    WaitStart();
                 //}
                 //uIManager.craftSystem = this;
-                Reference.Instance.inventoryManager.chestPanel.alpha = 0;
-                Reference.Instance.inventoryManager.shopPanel.alpha = 0;
+                //Reference.Instance.inventoryManager.chestPanel.alpha = 0;
+                //Reference.Instance.inventoryManager.shopPanel.alpha = 0;
                 Reference.Instance.inventoryManager.craftPanel.alpha = 1;
-                Reference.Instance.inventoryManager.chestPanel.blocksRaycasts = false;
-                Reference.Instance.inventoryManager.shopPanel.blocksRaycasts = false;
+                //Reference.Instance.inventoryManager.chestPanel.blocksRaycasts = false;
+                //Reference.Instance.inventoryManager.shopPanel.blocksRaycasts = false;
                 Reference.Instance.inventoryManager.craftPanel.blocksRaycasts = true;
                 Reference.Instance.inventoryManager.inventoryPanel.alpha = 1;
             }

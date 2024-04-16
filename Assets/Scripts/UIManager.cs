@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public ShopSystem shopSystem;
     public ChestSystem chestSystem;
     public CraftControl craftControl;
+    public TaskSystem taskSystem;
     void Start()
     {
         CoinUpdate();

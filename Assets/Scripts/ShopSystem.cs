@@ -119,11 +119,11 @@ public class ShopSystem : MonoBehaviour
                     WaitStart();
                 }
                 uIManager.shopSystem = this;
-                Reference.Instance.inventoryManager.craftPanel.alpha = 0;
-                Reference.Instance.inventoryManager.chestPanel.alpha = 0;
+                //Reference.Instance.inventoryManager.craftPanel.alpha = 0;
+                //Reference.Instance.inventoryManager.chestPanel.alpha = 0;
                 Reference.Instance.inventoryManager.shopPanel.alpha = 1;
-                Reference.Instance.inventoryManager.craftPanel.blocksRaycasts = false;
-                Reference.Instance.inventoryManager.chestPanel.blocksRaycasts = false;
+                //Reference.Instance.inventoryManager.craftPanel.blocksRaycasts = false;
+                //Reference.Instance.inventoryManager.chestPanel.blocksRaycasts = false;
                 Reference.Instance.inventoryManager.shopPanel.blocksRaycasts = true;
                 Reference.Instance.inventoryManager.inventoryPanel.alpha = 1;
             }

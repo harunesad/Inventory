@@ -47,24 +47,38 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             inventoryManager.selection.GetComponent<RectTransform>().position = rect.position;
             if (armour && !drag.drag)
             {
+                DetailsTransformUpate(armourDetails.GetComponent<RectTransform>());
                 armourDetails.gameObject.SetActive(true);
                 armourDetails.DetailsUpdate(armour.armourName, armour.description, quantityText.text, durability / 100, armour.levelData[level].sellPrice,
                     armour.levelData[level].buyPrice, armour.levelData[level].armour, armour.levelData[level].addHealth, rarityImage, itemImage);
             }
             else if (weapons && !drag.drag)
             {
+                DetailsTransformUpate(weaponDetails.GetComponent<RectTransform>());
                 weaponDetails.gameObject.SetActive(true);
                 weaponDetails.DetailsUpdate(weapons.weaponName, weapons.description, quantityText.text, durability / 100, weapons.levelData[level].sellPrice,
                     weapons.levelData[level].buyPrice, weapons.levelData[level].attack, weapons.levelData[level].attackSpeed, rarityImage, itemImage);
             }
             else if (items && !drag.drag)
             {
+                DetailsTransformUpate(itemDetails.GetComponent<RectTransform>());
                 itemDetails.gameObject.SetActive(true);
                 itemDetails.DetailsUpdate(items.itemName, items.description, quantityText.text, items.maxStock, items.sellPrice, items.buyPrice, rarityImage, itemImage);
             }
         }
     }
-
+    void DetailsTransformUpate(RectTransform rect)
+    {
+        Vector3 newRectPos = this.rect.position + (Vector3.right * 300);
+        if (newRectPos.x > 900)
+        {
+            rect.position = this.rect.position + (Vector3.left * 300);
+        }
+        else
+        {
+            rect.position = this.rect.position + (Vector3.right * 300);
+        }
+    }
     public void OnPointerExit(PointerEventData eventData)
     {
         armourDetails.gameObject.SetActive(false);

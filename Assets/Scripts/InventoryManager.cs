@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public CanvasGroup inventoryPanel;
-    public CanvasGroup shopPanel, chestPanel, craftPanel;
+    public CanvasGroup shopPanel, chestPanel, craftPanel, taskPanel;
     public Inventory mainInventory, chestInventory, shopInventory, craftInventory;
     public UseItem use;
     public CanvasGroup interact;
@@ -116,9 +116,11 @@ public class InventoryManager : MonoBehaviour
             shopPanel.blocksRaycasts = false;
             chestPanel.blocksRaycasts = false;
             craftPanel.blocksRaycasts = false;
+            taskPanel.blocksRaycasts = false;
             shopPanel.alpha = 0;
             chestPanel.alpha = 0;
             craftPanel.alpha = 0;
+            taskPanel.alpha = 0;
             inventoryPanel.alpha = (inventoryPanel.alpha == 0) ? 1 : 0;
         }
         Application.quitting += InventoryItemsUpdate;

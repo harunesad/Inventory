@@ -8,7 +8,6 @@ public class ChestSystem : MonoBehaviour
     Inventory mainInventory;
     [SerializeField] int shopCount;
     [SerializeField] List<ChestInventoryStart> inventoryStart;
-    public bool open;
 
     void Start()
     {
@@ -83,7 +82,7 @@ public class ChestSystem : MonoBehaviour
                 uIManager = Reference.Instance.uIManager;
             }
             uIManager.InteractActive("Speak");
-            if (Input.GetKeyDown(KeyCode.E) && open)
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 uIManager.InteractPassive();
                 if (uIManager.chestSystem != this)
@@ -91,11 +90,11 @@ public class ChestSystem : MonoBehaviour
                     WaitStart();
                 }
                 uIManager.chestSystem = this;
-                Reference.Instance.inventoryManager.craftPanel.alpha = 0;
-                Reference.Instance.inventoryManager.shopPanel.alpha = 0;
+                //Reference.Instance.inventoryManager.craftPanel.alpha = 0;
+                //Reference.Instance.inventoryManager.shopPanel.alpha = 0;
                 Reference.Instance.inventoryManager.chestPanel.alpha = 1;
-                Reference.Instance.inventoryManager.craftPanel.blocksRaycasts = false;
-                Reference.Instance.inventoryManager.shopPanel.blocksRaycasts = false;
+                //Reference.Instance.inventoryManager.craftPanel.blocksRaycasts = false;
+                //Reference.Instance.inventoryManager.shopPanel.blocksRaycasts = false;
                 Reference.Instance.inventoryManager.chestPanel.blocksRaycasts = true;
                 Reference.Instance.inventoryManager.inventoryPanel.alpha = 1;
             }
