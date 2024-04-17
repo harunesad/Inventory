@@ -192,12 +192,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else if (taskItems && taskItems.taskInventoryStart.isStarted)
         {
-            //taskItems.TaskUpdate(mySlot);
-            Debug.Log("aaaa");
-            if (taskItems.TaskUpdate(mySlot))
-            {
-                inventory.SlotReset(mySlot);
-            }
+            taskItems.TaskUpdate(mySlot);
         }
         transform.parent = mySlot.transform;
         rect.position = startPos;

@@ -14,8 +14,10 @@ public class TaskItems : MonoBehaviour
     public GameObject taskSlot;
     public TaskInventoryStart taskInventoryStart;
     public bool taskStarted;
+    Inventory inventory;
     void Start()
     {
+        inventory = Reference.Instance.inventoryManager.mainInventory;
         Reference.Instance.uIManager.taskItems = this;
         startTask.onClick.AddListener(TaskNotification);
         finishTask.onClick.AddListener(RewardTake);
@@ -120,16 +122,26 @@ public class TaskItems : MonoBehaviour
             if (slot.weapons && slot.weapons == taskInventoryStart.itemsRequired[i].weapons)
             {
                 progress = true;
+                inventory.SlotReset(slot);
                 taskInventoryStart.itemsRequired[i].collect = taskInventoryStart.itemsRequired[i].quantity;
             }
             else if (slot.armour && slot.armour == taskInventoryStart.itemsRequired[i].armours)
             {
                 progress = true;
+                inventory.SlotReset(slot);
                 taskInventoryStart.itemsRequired[i].collect = taskInventoryStart.itemsRequired[i].quantity;
             }
             else if (slot.items && slot.items == taskInventoryStart.itemsRequired[i].items && int.Parse(slot.quantityText.text) >= taskInventoryStart.itemsRequired[i].quantity)
             {
                 progress = true;
+                if (int.Parse(slot.quantityText.text) == taskInventoryStart.itemsRequired[i].quantity)
+                {
+                    inventory.SlotReset(slot);
+                }
+                else
+                {
+                    inventory.ItemSlotUpdate(slot, int.Parse(slot.quantityText.text) - taskInventoryStart.itemsRequired[i].quantity, slot.items.itemImage, slot.items.rarityType, slot.items);
+                }
                 taskInventoryStart.itemsRequired[i].collect = taskInventoryStart.itemsRequired[i].quantity;
             }
             if (taskInventoryStart.itemsRequired[i].items)
@@ -169,7 +181,6 @@ public class TaskItems : MonoBehaviour
     void RewardTake()
     {
         int emptySlot = 0;
-        Inventory inventory = Reference.Instance.inventoryManager.mainInventory;
         for (int i = 0; i < inventory.slots.Count; i++)
         {
             if (!inventory.slots[i].items && !inventory.slots[i].armour && !inventory.slots[i].weapons)
