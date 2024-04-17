@@ -10,19 +10,21 @@ public class TaskItems : MonoBehaviour
     [SerializeField] TextMeshProUGUI itemName, description;
     [SerializeField] Image itemImage;
     [SerializeField] Transform requiredItems, rewardItems;
-    [SerializeField] Button startTask;
+    [SerializeField] Button startTask, finishTask;
+    public GameObject taskSlot;
     public TaskInventoryStart taskInventoryStart;
     public bool taskStarted;
     void Start()
     {
         Reference.Instance.uIManager.taskItems = this;
-        startTask.onClick.AddListener(StartTask);
+        startTask.onClick.AddListener(TaskNotification);
+        finishTask.onClick.AddListener(RewardTake);
     }
     void Update()
     {
         
     }
-    public void TaskUpdate(TaskInventoryStart taskInventoryStart)
+    public void StartTask(TaskInventoryStart taskInventoryStart)
     {
         this.taskInventoryStart = taskInventoryStart;
         itemName.text = taskInventoryStart.taskName;
@@ -30,17 +32,17 @@ public class TaskItems : MonoBehaviour
         itemImage.sprite = taskInventoryStart.taskImage;
         for (int i = 0; i < taskInventoryStart.rewardItems.Count; i++)
         {
-            if (taskInventoryStart.itemsRequired[i].items)
+            if (taskInventoryStart.rewardItems[i].items)
             {
                 Rewards(i);
                 rewardItems.GetChild(i).GetComponent<Image>().sprite = taskInventoryStart.rewardItems[i].items.itemImage;
             }
-            else if (taskInventoryStart.itemsRequired[i].weapons)
+            else if (taskInventoryStart.rewardItems[i].weapons)
             {
                 Rewards(i);
                 rewardItems.GetChild(i).GetComponent<Image>().sprite = taskInventoryStart.rewardItems[i].weapons.weaponImage;
             }
-            else if (taskInventoryStart.itemsRequired[i].armours)
+            else if (taskInventoryStart.rewardItems[i].armours)
             {
                 Rewards(i);
                 rewardItems.GetChild(i).GetComponent<Image>().sprite = taskInventoryStart.rewardItems[i].armours.armourImage;
@@ -71,6 +73,7 @@ public class TaskItems : MonoBehaviour
         else
         {
             startTask.interactable = true;
+            finishTask.interactable = false;
         }
     }
     void Required(int i)
@@ -83,7 +86,7 @@ public class TaskItems : MonoBehaviour
         rewardItems.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = taskInventoryStart.rewardItems[i].quantity.ToString();
         rewardItems.GetChild(i).gameObject.SetActive(true);
     }
-    void StartTask()
+    void TaskNotification()
     {
         taskStarted = true;
         taskInventoryStart.isStarted = true;
@@ -110,52 +113,122 @@ public class TaskItems : MonoBehaviour
     }
     public bool TaskUpdate(InventorySlot slot)
     {
-        bool progress = false;
+        bool progress = false, complete = true;
         string message = "";
         for (int i = 0; i < taskInventoryStart.itemsRequired.Count; i++)
         {
             if (slot.weapons && slot.weapons == taskInventoryStart.itemsRequired[i].weapons)
             {
-                Debug.Log("aa");
-                message = message + taskInventoryStart.itemsRequired[i].weapons.name + " " + slot.quantityText.text + " / " + taskInventoryStart.itemsRequired[i].quantity.ToString() + "\n";
-                Reference.Instance.uIManager.NotificationActive(message, taskInventoryStart.taskImage, true, false);
                 progress = true;
                 taskInventoryStart.itemsRequired[i].collect = taskInventoryStart.itemsRequired[i].quantity;
             }
             else if (slot.armour && slot.armour == taskInventoryStart.itemsRequired[i].armours)
             {
-                message = message + taskInventoryStart.itemsRequired[i].armours.name + " " + slot.quantityText.text + " / " + taskInventoryStart.itemsRequired[i].quantity.ToString() + "\n";
-                Reference.Instance.uIManager.NotificationActive(message, taskInventoryStart.taskImage, true, false);
                 progress = true;
                 taskInventoryStart.itemsRequired[i].collect = taskInventoryStart.itemsRequired[i].quantity;
             }
             else if (slot.items && slot.items == taskInventoryStart.itemsRequired[i].items && int.Parse(slot.quantityText.text) >= taskInventoryStart.itemsRequired[i].quantity)
             {
-                message = message + taskInventoryStart.itemsRequired[i].items.name + " " + taskInventoryStart.itemsRequired[i].quantity + " / " + taskInventoryStart.itemsRequired[i].quantity.ToString() + "\n";
-                Reference.Instance.uIManager.NotificationActive(message, taskInventoryStart.taskImage, true, false);
                 progress = true;
                 taskInventoryStart.itemsRequired[i].collect = taskInventoryStart.itemsRequired[i].quantity;
             }
-            else
+            if (taskInventoryStart.itemsRequired[i].items)
             {
-                if (taskInventoryStart.itemsRequired[i].items)
+                message = message + taskInventoryStart.itemsRequired[i].items.name + " " + taskInventoryStart.itemsRequired[i].collect + " / " + taskInventoryStart.itemsRequired[i].quantity.ToString() + "\n";
+                Reference.Instance.uIManager.NotificationActive(message, taskInventoryStart.taskImage, true, false);
+                if (taskInventoryStart.itemsRequired[i].collect != taskInventoryStart.itemsRequired[i].quantity)
                 {
-                    Debug.Log("aa");
-                    message = message + taskInventoryStart.itemsRequired[i].items.name + " " + taskInventoryStart.itemsRequired[i].collect + " / " + taskInventoryStart.itemsRequired[i].quantity.ToString() + "\n";
-                    Reference.Instance.uIManager.NotificationActive(message, taskInventoryStart.taskImage, true, false);
+                    complete = false;
                 }
-                else if (taskInventoryStart.itemsRequired[i].weapons)
+            }
+            else if (taskInventoryStart.itemsRequired[i].weapons)
+            {
+                message = message + taskInventoryStart.itemsRequired[i].weapons.name + " " + taskInventoryStart.itemsRequired[i].collect + " / " + taskInventoryStart.itemsRequired[i].quantity.ToString() + "\n";
+                Reference.Instance.uIManager.NotificationActive(message, taskInventoryStart.taskImage, true, false);
+                if (taskInventoryStart.itemsRequired[i].collect != taskInventoryStart.itemsRequired[i].quantity)
                 {
-                    message = message + taskInventoryStart.itemsRequired[i].weapons.name + " " + taskInventoryStart.itemsRequired[i].collect + " / " + taskInventoryStart.itemsRequired[i].quantity.ToString() + "\n";
-                    Reference.Instance.uIManager.NotificationActive(message, taskInventoryStart.taskImage, true, false);
+                    complete = false;
                 }
-                else if (taskInventoryStart.itemsRequired[i].armours)
+            }
+            else if (taskInventoryStart.itemsRequired[i].armours)
+            {
+                message = message + taskInventoryStart.itemsRequired[i].armours.name + " " + taskInventoryStart.itemsRequired[i].collect + " / " + taskInventoryStart.itemsRequired[i].quantity.ToString() + "\n";
+                Reference.Instance.uIManager.NotificationActive(message, taskInventoryStart.taskImage, true, false);
+                if (taskInventoryStart.itemsRequired[i].collect != taskInventoryStart.itemsRequired[i].quantity)
                 {
-                    message = message + taskInventoryStart.itemsRequired[i].armours.name + " " + taskInventoryStart.itemsRequired[i].collect + " / " + taskInventoryStart.itemsRequired[i].quantity.ToString() + "\n";
-                    Reference.Instance.uIManager.NotificationActive(message, taskInventoryStart.taskImage, true, false);
+                    complete = false;
                 }
             }
         }
+        if (complete)
+        {
+            finishTask.interactable = true;
+        }
         return progress;
+    }
+    void RewardTake()
+    {
+        int emptySlot = 0;
+        Inventory inventory = Reference.Instance.inventoryManager.mainInventory;
+        for (int i = 0; i < inventory.slots.Count; i++)
+        {
+            if (!inventory.slots[i].items && !inventory.slots[i].armour && !inventory.slots[i].weapons)
+            {
+                emptySlot++;
+            }
+        }
+        if (emptySlot < taskInventoryStart.rewardItems.Count)
+        {
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < taskInventoryStart.rewardItems.Count; i++)
+            {
+                for (int j = 0; j < inventory.slots.Count; j++)
+                {
+                    if (!inventory.slots[j].items && !inventory.slots[j].armour && !inventory.slots[j].weapons)
+                    {
+                        if (taskInventoryStart.rewardItems[i].items)
+                        {
+                            inventory.ItemSlotUpdate(null, taskInventoryStart.rewardItems[i].quantity, taskInventoryStart.rewardItems[i].items.itemImage, 
+                                taskInventoryStart.rewardItems[i].items.rarityType, taskInventoryStart.rewardItems[i].items);
+                            break;
+                        }
+                        else if (taskInventoryStart.rewardItems[i].weapons)
+                        {
+                            inventory.WeaponSlotUpdate(null, taskInventoryStart.rewardItems[i].quantity, taskInventoryStart.rewardItems[i].weapons.weaponImage,
+                                taskInventoryStart.rewardItems[i].weapons.rarityType, taskInventoryStart.rewardItems[i].level, 100, taskInventoryStart.rewardItems[i].weapons);
+                            break;
+                        }
+                        else if (taskInventoryStart.rewardItems[i].armours)
+                        {
+                            inventory.ArmourSlotUpdate(null, taskInventoryStart.rewardItems[i].quantity, taskInventoryStart.rewardItems[i].armours.armourImage,
+                                taskInventoryStart.rewardItems[i].armours.rarityType, taskInventoryStart.rewardItems[i].level, 100, taskInventoryStart.rewardItems[i].armours);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        taskStarted = false;
+        taskInventoryStart.isStarted = false;
+        startTask.interactable = true;
+        finishTask.interactable = false;
+        ResetItems();
+        Reference.Instance.uIManager.NotificationActive("", taskInventoryStart.taskImage, true, true);
+        Reference.Instance.uIManager.taskSystem.currentTask++;
+        Reference.Instance.uIManager.taskSystem.WaitStart();
+    }
+    void ResetItems()
+    {
+        for (int i = 0; i < requiredItems.childCount; i++)
+        {
+            requiredItems.GetChild(i).gameObject.SetActive(false);
+        }
+        for (int i = 0; i < rewardItems.childCount; i++)
+        {
+            rewardItems.GetChild(i).gameObject.SetActive(false);
+        }
     }
 }

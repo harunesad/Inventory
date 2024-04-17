@@ -159,7 +159,6 @@ public class Inventory : MonoBehaviour
             equipItem1.Unequip();
         }
 
-        //mySlot.quantityText.text = changeSlot.quantityText.text;
         mySlot.itemImage.sprite = changeSlot.itemImage.sprite;
         mySlot.rarityImage.sprite = changeSlot.rarityImage.sprite;
         mySlot.items = changeSlot.items;
@@ -168,7 +167,6 @@ public class Inventory : MonoBehaviour
         mySlot.level = changeSlot.level;
         mySlot.durability = changeSlot.durability;
 
-        //changeSlot.quantityText.text = quantity;
         changeSlot.itemImage.sprite = itemImage;
         changeSlot.rarityImage.sprite = rarityImage;
         changeSlot.items = items;

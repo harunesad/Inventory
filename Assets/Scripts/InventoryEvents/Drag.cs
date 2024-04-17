@@ -67,9 +67,9 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 use = useItem;
             }
-            else if (result.gameObject.TryGetComponent<TaskItems>(out TaskItems taskItem))
+            else if (result.gameObject == Reference.Instance.uIManager.taskItems.taskSlot)
             {
-                taskItems = taskItem;
+                taskItems = Reference.Instance.uIManager.taskItems;
             }
         }
         bool slotState = slot;
@@ -193,6 +193,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         else if (taskItems && taskItems.taskInventoryStart.isStarted)
         {
             //taskItems.TaskUpdate(mySlot);
+            Debug.Log("aaaa");
             if (taskItems.TaskUpdate(mySlot))
             {
                 inventory.SlotReset(mySlot);

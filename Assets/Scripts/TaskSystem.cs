@@ -7,14 +7,14 @@ public class TaskSystem : MonoBehaviour
     UIManager uIManager;
     [SerializeField] List<TaskInventoryStart> inventoryStart;
     [SerializeField] TaskItems taskItems;
-    int currentTask;
+    public int currentTask;
     void Start()
     {
 
     }
-    void WaitStart()
+    public void WaitStart()
     {
-        taskItems.TaskUpdate(inventoryStart[currentTask]);
+        taskItems.StartTask(inventoryStart[currentTask]);
     }
     // Update is called once per frame
     void Update()
@@ -64,7 +64,7 @@ public class TaskInventoryStart
     public string taskDescription;
     public Sprite taskImage;
     public List<ItemsRequired> rewardItems;
-    public bool isStarted;
+    public bool isStarted, isFinished;
 }
 [System.Serializable]
 public class ItemsRequired
@@ -73,5 +73,6 @@ public class ItemsRequired
     public Weapons weapons;
     public Armours armours;
     public int quantity;
+    public int level;
     public int collect;
 }
