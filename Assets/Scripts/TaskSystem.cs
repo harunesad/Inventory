@@ -14,7 +14,16 @@ public class TaskSystem : MonoBehaviour
     }
     public void WaitStart()
     {
-        taskItems.StartTask(inventoryStart[currentTask]);
+        if (currentTask > inventoryStart.Count - 1)
+        {
+            Debug.Log("aaa");
+            Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(true);
+        }
+        else
+        {
+            taskItems.StartTask(inventoryStart[currentTask]);
+            Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(false);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -36,6 +45,11 @@ public class TaskSystem : MonoBehaviour
                 if ((Reference.Instance.uIManager.taskSystem == this || !taskItems.taskStarted))
                 {
                     uIManager.InteractPassive();
+                    if (currentTask > inventoryStart.Count - 1)
+                    {
+                        Debug.Log("aaa");
+                        Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(true);
+                    }
                     if (uIManager.taskSystem != this)
                     {
                         WaitStart();

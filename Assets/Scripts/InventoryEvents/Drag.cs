@@ -190,7 +190,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 inventory.SlotReset(mySlot);
             }
         }
-        else if (taskItems && taskItems.taskInventoryStart.isStarted)
+        else if (taskItems && !mySlot.gameObject.TryGetComponent<EquipItem>(out EquipItem equip1) && taskItems.taskInventoryStart.isStarted)
         {
             taskItems.TaskUpdate(mySlot);
         }
