@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] CanvasGroup interact, notification, taskNotification;
+    public CanvasGroup speakPanel;
+    public Image speakerImage;
+    public TextMeshProUGUI speakerName, displayLine;
+    public Transform buttonPanel;
     [SerializeField] TextMeshProUGUI message, coinText;
     [SerializeField] Button refresh;
     [SerializeField] int refreshCost;
