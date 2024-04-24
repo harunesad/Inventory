@@ -90,6 +90,7 @@ public class TaskItems : MonoBehaviour
     }
     void TaskNotification()
     {
+        Reference.Instance.uIManager.taskSystem.currentGraph++;
         taskStarted = true;
         taskInventoryStart.isStarted = true;
         startTask.interactable = false;
@@ -229,6 +230,7 @@ public class TaskItems : MonoBehaviour
         ResetItems();
         Reference.Instance.uIManager.NotificationActive("", taskInventoryStart.taskImage, true, true);
         Reference.Instance.uIManager.taskSystem.currentTask++;
+        Reference.Instance.uIManager.taskSystem.currentGraph++;
         Reference.Instance.uIManager.taskSystem.WaitStart();
     }
     void ResetItems()

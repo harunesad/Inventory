@@ -108,7 +108,7 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && Reference.Instance.uIManager.speakPanel.alpha == 0)
         {
             craftPanel.GetComponentInChildren<CraftControl>().CraftSlotUpdate();
             select.GetComponent<RectTransform>().position = selectPos;

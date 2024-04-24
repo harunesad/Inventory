@@ -5,17 +5,14 @@ using UnityEngine.UI;
 using XNode;
 using TMPro;
 using UnityEngine.Events;
-//using MalbersAnimations.Controller;
-//using MalbersAnimations;
 
 public class NodeParser : MonoBehaviour
 {
-    //private PauseManager pauser;
-    public DialogueGraph graph;
+    public List<DialogueGraph> graph;
     Coroutine parser, displayLine;
     TMP_Text speaker, dialogue;
     Image speakerImage;
-    //CanvasGroup dialoguePanel;
+    TaskSystem taskSystem;
     bool nextDialogue = false;
     Transform buttonPanel;
     int dialogueIndex;
@@ -25,6 +22,7 @@ public class NodeParser : MonoBehaviour
 
     private void Start()
     {
+        taskSystem = GetComponentInChildren<TaskSystem>();
         buttonPanel = Reference.Instance.uIManager.buttonPanel;
         speakerImage = Reference.Instance.uIManager.speakerImage;
         speaker = Reference.Instance.uIManager.speakerName;
@@ -42,13 +40,11 @@ public class NodeParser : MonoBehaviour
     }
     public void DialogueStart()
     {
-        //pauser = referances.instance.pauseManager;
-        //pauser.Paused();
-        foreach (BaseNode baseNode in graph.nodes)
+        foreach (BaseNode baseNode in graph[taskSystem.currentGraph].nodes)
         {
             if (baseNode.GetString() == "Start")
             {
-                graph.current = baseNode;
+                graph[taskSystem.currentGraph].current = baseNode;
                 break;
             }
         }
@@ -57,7 +53,7 @@ public class NodeParser : MonoBehaviour
 
     IEnumerator ParseNode()
     {
-        BaseNode baseNode = graph.current;
+        BaseNode baseNode = graph[taskSystem.currentGraph].current;
         string data = baseNode.GetString();
         string[] dataParts = data.Split("/");
         if (dataParts[0] == "Start")
@@ -73,7 +69,6 @@ public class NodeParser : MonoBehaviour
             dialogueIndex = 0;
             Reference.Instance.uIManager.speakPanel.alpha = 0;
             Reference.Instance.uIManager.speakPanel.blocksRaycasts = false;
-            //pauser.Resume();
         }
         if (dataParts[0] == "DialogueNode")
         {
@@ -130,11 +125,11 @@ public class NodeParser : MonoBehaviour
             StopCoroutine(parser);
             parser = null;
         }
-        foreach (NodePort nodePort in graph.current.Ports)
+        foreach (NodePort nodePort in graph[taskSystem.currentGraph].current.Ports)
         {
             if (nodePort.fieldName == fieldName)
             {
-                graph.current = nodePort.Connection.node as BaseNode;
+                graph[taskSystem.currentGraph].current = nodePort.Connection.node as BaseNode;
                 break;
             }
         }

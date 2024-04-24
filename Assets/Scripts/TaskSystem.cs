@@ -4,42 +4,29 @@ using UnityEngine;
 
 public class TaskSystem : MonoBehaviour
 {
-    UIManager uIManager;
+    [SerializeField] NodeParser dialogue;
+    public int currentTask, currentGraph;
     [SerializeField] List<TaskInventoryStart> inventoryStart;
-    [SerializeField] TaskItems taskItems;
-    public int currentTask;
+    TaskItems taskItems;
+    UIManager uIManager;
     void Start()
     {
 
     }
-    public void WaitStart()
-    {
-        if (currentTask > inventoryStart.Count - 1)
-        {
-            Debug.Log("aaa");
-            Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(true);
-        }
-        else
-        {
-            taskItems.StartTask(inventoryStart[currentTask]);
-            Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(false);
-        }
-    }
-    // Update is called once per frame
     void Update()
     {
         
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Reference.Instance.inventoryManager.taskPanel.alpha != 1)
+        if (other.CompareTag("Player") && Reference.Instance.uIManager.speakPanel.alpha == 0)
         {
             if (!uIManager)
             {
                 uIManager = Reference.Instance.uIManager;
             }
             uIManager.InteractActive("Speak");
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && dialogue.graph.Count > currentGraph)
             {
                 taskItems = Reference.Instance.uIManager.taskItems;
                 if ((Reference.Instance.uIManager.taskSystem == this || !taskItems.taskStarted))
@@ -55,9 +42,10 @@ public class TaskSystem : MonoBehaviour
                         WaitStart();
                     }
                     Reference.Instance.uIManager.taskSystem = this;
-                    Reference.Instance.inventoryManager.taskPanel.alpha = 1;
-                    Reference.Instance.inventoryManager.taskPanel.blocksRaycasts = true;
-                    Reference.Instance.inventoryManager.inventoryPanel.alpha = 1;
+                    dialogue.DialogueStart();
+                    Reference.Instance.uIManager.speakPanel.alpha = 1;
+                    Reference.Instance.uIManager.speakPanel.blocksRaycasts = true;
+                    Reference.Instance.uIManager.InteractPassive();
                 }
             }
         }
@@ -68,6 +56,25 @@ public class TaskSystem : MonoBehaviour
         {
             uIManager.InteractPassive();
         }
+    }
+    public void WaitStart()
+    {
+        if (currentTask > inventoryStart.Count - 1)
+        {
+            Debug.Log("aaa");
+            Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(true);
+        }
+        else
+        {
+            taskItems.StartTask(inventoryStart[currentTask]);
+            Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(false);
+        }
+    }
+    public void TaskOpen()
+    {
+        Reference.Instance.inventoryManager.taskPanel.alpha = 1;
+        Reference.Instance.inventoryManager.taskPanel.blocksRaycasts = true;
+        Reference.Instance.inventoryManager.inventoryPanel.alpha = 1;
     }
 }
 [System.Serializable]
