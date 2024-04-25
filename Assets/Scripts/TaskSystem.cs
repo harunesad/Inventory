@@ -37,11 +37,6 @@ public class TaskSystem : MonoBehaviour
                         Debug.Log("aaa");
                         Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(true);
                     }
-                    if (uIManager.taskSystem != this)
-                    {
-                        WaitStart();
-                    }
-                    Reference.Instance.uIManager.taskSystem = this;
                     dialogue.DialogueStart();
                     Reference.Instance.uIManager.speakPanel.alpha = 1;
                     Reference.Instance.uIManager.speakPanel.blocksRaycasts = true;
@@ -72,6 +67,11 @@ public class TaskSystem : MonoBehaviour
     }
     public void TaskOpen()
     {
+        if (uIManager.taskSystem != this)
+        {
+            WaitStart();
+        }
+        Reference.Instance.uIManager.taskSystem = this;
         Reference.Instance.inventoryManager.taskPanel.alpha = 1;
         Reference.Instance.inventoryManager.taskPanel.blocksRaycasts = true;
         Reference.Instance.inventoryManager.inventoryPanel.alpha = 1;
