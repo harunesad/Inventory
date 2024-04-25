@@ -34,7 +34,6 @@ public class TaskSystem : MonoBehaviour
                     uIManager.InteractPassive();
                     if (currentTask > inventoryStart.Count - 1)
                     {
-                        Debug.Log("aaa");
                         Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(true);
                     }
                     dialogue.DialogueStart();
@@ -56,7 +55,6 @@ public class TaskSystem : MonoBehaviour
     {
         if (currentTask > inventoryStart.Count - 1)
         {
-            Debug.Log("aaa");
             Reference.Instance.inventoryManager.taskEmptyPanel.gameObject.SetActive(true);
         }
         else

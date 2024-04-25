@@ -38,19 +38,35 @@ public class NodeParser : MonoBehaviour
     {
         if (dialogueStart)
         {
+            bool next = false;
+            int finishIndex = 0;
+            for (int i = 0; i < buttonPanel.childCount; i++)
+            {
+                if (buttonPanel.GetChild(i).gameObject.activeSelf)
+                {
+                    next = true;
+                    finishIndex = i;
+                }
+            }
             if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
+                buttonPanel.GetChild(buttonCount).GetComponent<Image>().color = buttonPanel.GetChild(buttonCount).GetComponent<Button>().colors.normalColor;
                 buttonCount++;
+                buttonCount = buttonCount > finishIndex ? 0 : buttonCount;
+                buttonPanel.GetChild(buttonCount).GetComponent<Image>().color = buttonPanel.GetChild(buttonCount).GetComponent<Button>().colors.pressedColor;
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
+                buttonPanel.GetChild(buttonCount).GetComponent<Image>().color = buttonPanel.GetChild(buttonCount).GetComponent<Button>().colors.normalColor;
                 buttonCount--;
+                buttonCount = buttonCount < 0 ? finishIndex : buttonCount;
+                buttonPanel.GetChild(buttonCount).GetComponent<Image>().color = buttonPanel.GetChild(buttonCount).GetComponent<Button>().colors.pressedColor;
             }
-            else if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (Input.GetKeyDown(KeyCode.Return) && next)
             {
-
+                dialogueIndex = buttonCount;
+                nextDialogue = true;
             }
-            //buttonCount=buttonCount>buttonPanel.childCount?
         }
     }
     //void NextDialogue(int index)
@@ -70,12 +86,12 @@ public class NodeParser : MonoBehaviour
                 break;
             }
         }
-        buttonPanel.GetChild(buttonCount).GetComponent<Image>().color = buttonPanel.GetChild(buttonCount).GetComponent<Button>().colors.pressedColor;
         parser = StartCoroutine(ParseNode());
     }
 
     IEnumerator ParseNode()
     {
+        buttonPanel.GetChild(buttonCount).GetComponent<Image>().color = buttonPanel.GetChild(buttonCount).GetComponent<Button>().colors.pressedColor;
         BaseNode baseNode = graph[taskSystem.currentGraph].current;
         string data = baseNode.GetString();
         string[] dataParts = data.Split("/");
@@ -109,6 +125,10 @@ public class NodeParser : MonoBehaviour
             displayLine = StartCoroutine(DisplayeLine(dataParts[2], baseNode));
             speakerImage.sprite = baseNode.GetSprite();
             yield return new WaitUntil(() => nextDialogue);
+            for (int i = 0; i < buttonPanel.childCount; i++)
+            {
+                buttonPanel.GetChild(i).GetComponent<Image>().color = buttonPanel.GetChild(i).GetComponent<Button>().colors.normalColor;
+            }
             nextDialogue = false;
             buttonCount = 0;
             NextNode("exit" + dialogueIndex);
@@ -122,12 +142,12 @@ public class NodeParser : MonoBehaviour
         foreach (char letter in line.ToCharArray())
         {
             dialogue.text += letter;
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 skip = true;
                 dialogue.text = line;
             }
-            if (dialogue.text.Length == line.ToCharArray().Length)
+            else if (dialogue.text.Length == line.ToCharArray().Length)
             {
                 for (int i = 0; i < baseNode.buttonCount; i++)
                 {
